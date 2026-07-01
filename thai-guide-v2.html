@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thai Language Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D6;
+    --cream-darker: #E0D8C4;
+    --ink: #1A1410;
+    --ink-soft: #3D3028;
+    --ink-muted: #7A6A5A;
+    --orange: #E8722A;
+    --orange-light: #F0924A;
+    --orange-pale: #FDE8D4;
+    --purple: #6B4F8A;
+    --purple-light: #8B6FAA;
+    --purple-pale: #EDE8F5;
+    --blue: #3A6B8A;
+    --blue-light: #5A8BAA;
+    --blue-pale: #E4EEF5;
+    --green: #4A7A5A;
+    --green-light: #6A9A7A;
+    --green-pale: #E4F0E8;
+    --teal: #3A7A78;
+    --teal-pale: #E4F0EF;
+    --rose: #8A4A5A;
+    --rose-pale: #F5E4E8;
+    --gold: #A07830;
+    --gold-pale: #F5EDD4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--ink);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(232,114,42,0.04) 40px, rgba(232,114,42,0.04) 41px
+    );
+    pointer-events: none;
+  }
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  header h1 span { color: var(--orange); }
+  header p {
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #9A8A7A;
+  }
+
+  .translate-bar {
+    background: var(--cream-darker);
+    border-bottom: 2px solid var(--cream-dark);
+    padding: 0.6rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .translate-bar label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  #google_translate_element { display: inline-block; }
+  .goog-te-gadget-simple {
+    background: white !important;
+    border: 1.5px solid var(--orange) !important;
+    border-radius: 4px !important;
+    padding: 2px 8px !important;
+    font-family: 'Crimson Pro', serif !important;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .section-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .sec-btn {
+    background: var(--cream-dark);
+    border: 2px solid var(--cream-darker);
+    color: var(--ink-muted);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sec-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .sec-btn.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+  }
+
+  .section-content { display: none; }
+  .section-content.active { display: block; }
+
+  .lang-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--ink);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lang-hero::after {
+    content: '';
+    position: absolute;
+    right: -20px; top: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(232,114,42,0.08);
+  }
+  .lang-flag { font-size: 3rem; line-height: 1; }
+  .lang-hero-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .lang-hero-text p {
+    color: #8A7A6A;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+  .lang-hero-text .native-name {
+    color: var(--orange);
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ── COLLAPSIBLE CULTURAL NOTES ── */
+  .cultural-drawer {
+    margin-bottom: 1.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .cultural-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--purple-pale);
+    border: none;
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--purple);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .cultural-toggle:hover { background: #E0D8F0; }
+  .cultural-toggle-chevron {
+    font-size: 0.85rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .cultural-drawer.open .cultural-toggle-chevron { transform: rotate(180deg); }
+  .cultural-body {
+    display: none;
+    background: var(--purple-pale);
+    border-top: 1px solid rgba(107,79,138,0.15);
+    padding: 1.25rem 1.5rem;
+  }
+  .cultural-drawer.open .cultural-body { display: block; }
+  .cultural-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .cultural-body li::before { content: '✦  '; color: var(--purple-light); }
+  .cultural-body li { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ── SUPER SECTIONS (accordion groups) ── */
+  .super-section {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .super-section-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    background: var(--cream-dark);
+    border: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+    gap: 0.75rem;
+  }
+  .super-section-toggle:hover { background: var(--cream-darker); }
+  .super-section-toggle-left { display: flex; align-items: center; gap: 0.75rem; }
+  .super-section-badge {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.6rem;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.07);
+    color: var(--ink-muted);
+  }
+  .super-chevron {
+    font-size: 0.85rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    color: var(--ink-muted);
+  }
+  .super-section.open .super-chevron { transform: rotate(180deg); }
+  .super-section-body {
+    display: none;
+    padding: 1.25rem 1.25rem 0.5rem;
+    background: var(--cream);
+    border-top: 1.5px solid var(--cream-darker);
+  }
+  .super-section.open .super-section-body { display: block; }
+
+  /* color accents per super-section */
+  .super-core .super-section-toggle { border-left: 4px solid var(--rose); }
+  .super-daily .super-section-toggle { border-left: 4px solid var(--green); }
+  .super-language .super-section-toggle { border-left: 4px solid var(--blue); }
+  .super-culture .super-section-toggle { border-left: 4px solid var(--purple); }
+
+  /* ── CATEGORY BLOCKS ── */
+  .category-block { margin-bottom: 2rem; }
+  .category-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cat-survival  { background: var(--rose-pale);   color: var(--rose);   }
+  .cat-numbers   { background: var(--gold-pale);   color: var(--gold);   }
+  .cat-food      { background: var(--green-pale);  color: var(--green);  }
+  .cat-transport { background: var(--blue-pale);   color: var(--blue);   }
+  .cat-social    { background: var(--purple-pale); color: var(--purple); }
+  .cat-money     { background: var(--teal-pale);   color: var(--teal);   }
+  .cat-housing   { background: var(--orange-pale); color: var(--orange); }
+  .cat-health    { background: var(--rose-pale);   color: var(--rose);   }
+  .cat-pronouns  { background: #EAF0FF; color: #3A5A9A; }
+  .cat-questions { background: #FFF0E4; color: #B05A20; }
+  .cat-greetings { background: #E8F5EC; color: #2E7A48; }
+  .cat-titles    { background: #F5EAF5; color: #7A3A8A; }
+  .cat-numbers20 { background: var(--gold-pale); color: var(--gold); }
+  .cat-media     { background: #F0EAF8; color: #5A3A7A; }
+  .cat-slang     { background: #FFF0E8; color: #C05A20; }
+  .cat-particles { background: #E8F0FF; color: #3A4A9A; }
+  .cat-calendar  { background: #E8F5F0; color: #2A7A5A; }
+  .cat-colors    { background: #F0F0F8; color: #4A4A8A; }
+  .cat-classifiers { background: #F5F0E0; color: #7A6A20; }
+
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+  .word-card {
+    background: white;
+    border: 1.5px solid var(--cream-darker);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    transition: all 0.18s;
+    cursor: default;
+  }
+  .word-card:hover {
+    border-color: var(--orange);
+    box-shadow: 0 3px 12px rgba(232,114,42,0.12);
+    transform: translateY(-1px);
+  }
+  .word-en {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1rem;
+    min-width: 80px;
+  }
+  .word-translated {
+    font-size: 1.05rem;
+    color: var(--purple);
+    font-weight: 600;
+    text-align: right;
+    flex: 1;
+  }
+  .word-roman {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    text-align: right;
+  }
+  .word-right { text-align: right; }
+  .speak-btn {
+    background: var(--orange-pale);
+    border: none;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    color: var(--orange);
+  }
+  .speak-btn:hover { background: var(--orange); color: white; transform: scale(1.1); }
+
+  /* ── SENTENCE GROUPS ── */
+  .sentence-group {
+    margin-bottom: 1.25rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .sentence-group-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.1rem;
+    background: var(--cream-dark);
+    border: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+    gap: 0.5rem;
+  }
+  .sentence-group-toggle:hover { background: var(--cream-darker); }
+  .sentence-group-count {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.55rem;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.07);
+    color: var(--ink-muted);
+    flex-shrink: 0;
+  }
+  .sentence-group-right { display: flex; align-items: center; gap: 0.5rem; }
+  .sg-chevron {
+    font-size: 0.8rem;
+    transition: transform 0.25s;
+    color: var(--ink-muted);
+  }
+  .sentence-group.open .sg-chevron { transform: rotate(180deg); }
+  .sentence-group-body {
+    display: none;
+    padding: 0.75rem 1rem;
+    background: var(--cream);
+    border-top: 1.5px solid var(--cream-darker);
+  }
+  .sentence-group.open .sentence-group-body { display: block; }
+
+  .sentence-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .sentence-card {
+    background: white;
+    border: 1.5px solid var(--cream-darker);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.18s;
+  }
+  .sentence-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 3px 12px rgba(58,107,138,0.1);
+  }
+  .sentence-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--orange);
+    min-width: 32px;
+    padding-top: 2px;
+  }
+  .sentence-body { flex: 1; }
+  .sentence-en { font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .sentence-tr { color: var(--blue); font-size: 1.05rem; font-weight: 600; }
+  .sentence-roman { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; margin-top: 0.15rem; }
+
+  .emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .emergency-card {
+    background: linear-gradient(135deg, #FFF5F0 0%, white 100%);
+    border: 2px solid var(--orange);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    transition: all 0.18s;
+  }
+  .emergency-card:hover { box-shadow: 0 4px 16px rgba(232,114,42,0.2); }
+  .emergency-en { font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; font-size: 1.05rem; }
+  .emergency-tr { color: var(--orange); font-size: 1.1rem; font-weight: 700; }
+  .emergency-roman { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; margin-top: 0.15rem; }
+  .emergency-speak {
+    background: var(--orange);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    cursor: pointer;
+    margin-top: 0.6rem;
+    transition: all 0.15s;
+  }
+  .emergency-speak:hover { background: var(--orange-light); transform: scale(1.02); }
+
+  .fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--cream-darker);
+    transition: color 0.15s;
+    padding: 0;
+    line-height: 1;
+  }
+  .fav-btn.faved { color: var(--orange); }
+  .fav-btn:hover { color: var(--orange-light); }
+
+  .search-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    background: white;
+    border: 2px solid var(--cream-darker);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-input:focus { border-color: var(--orange); }
+  .search-input::placeholder { color: var(--ink-muted); }
+
+  .voice-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .voice-toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .voice-toggle {
+    display: flex;
+    background: var(--cream-darker);
+    border-radius: 50px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .voice-btn {
+    background: none;
+    border: none;
+    border-radius: 50px;
+    padding: 0.3rem 0.9rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--ink-muted);
+  }
+  .voice-btn.active {
+    background: var(--ink);
+    color: var(--cream);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.6rem;
+  }
+  .number-card {
+    background: white;
+    border: 1.5px solid var(--cream-darker);
+    border-radius: 10px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .number-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 3px 10px rgba(160,120,48,0.15);
+    transform: translateY(-1px);
+  }
+  .number-digit {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .number-tr {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--purple);
+    margin-top: 0.2rem;
+  }
+  .number-rom {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-top: 0.1rem;
+  }
+  .number-card .speak-btn {
+    position: absolute;
+    top: 5px; right: 5px;
+    width: 24px; height: 24px;
+    font-size: 0.7rem;
+  }
+
+  footer {
+    background: var(--ink);
+    color: #6A5A4A;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  footer span { color: var(--orange); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .word-card, .sentence-card, .emergency-card {
+    animation: fadeUp 0.3s ease both;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 1.5rem 1rem; }
+    main { padding: 1.25rem 0.75rem 3rem; }
+    .word-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇹🇭 <span>Thai</span> Language Guide</h1>
+  <p>200 words · 50 sentences · emergency phrases — your passport to Thailand</p>
+</header>
+
+<div class="translate-bar">
+  <label>🌐 Translate Page:</label>
+  <div id="google_translate_element"></div>
+</div>
+
+<main>
+
+  <div class="lang-hero">
+    <div class="lang-flag">🇹🇭</div>
+    <div class="lang-hero-text">
+      <div class="native-name">ภาษาไทย</div>
+      <h2>Thai</h2>
+      <p>Thai is tonal — the same syllable can have 5 different meanings depending on tone.</p>
+    </div>
+  </div>
+
+  <div class="voice-toggle-wrap">
+    <span class="voice-toggle-label">🎙 Voice:</span>
+    <div class="voice-toggle">
+      <button class="voice-btn active" onclick="setVoiceGender('th-TH','female',this)">♀ Female</button>
+      <button class="voice-btn" onclick="setVoiceGender('th-TH','male',this)">♂ Male</button>
+    </div>
+  </div>
+
+  <!-- COLLAPSIBLE CULTURAL NOTES -->
+  <div class="cultural-drawer" id="cultural-drawer">
+    <button class="cultural-toggle" onclick="toggleCultural()">
+      <span>✦ Cultural Tips &amp; Etiquette</span>
+      <span class="cultural-toggle-chevron">▼</span>
+    </button>
+    <div class="cultural-body">
+      <ul>
+        <li><strong>Remove your shoes</strong> before entering homes, temples, and certain small businesses.</li>
+        <li><strong>Greet with the "Wai"</strong> (pressing your palms together with a slight bow) to show respect.</li>
+        <li><strong>Never touch someone's head</strong>, as it is considered the most sacred part of the body.</li>
+        <li><strong>Point with an open hand</strong> rather than a single index finger to remain polite.</li>
+        <li><strong>Dress modestly at temples</strong> by ensuring your shoulders and knees are fully covered.</li>
+        <li><strong>Show absolute respect for the Royal Family</strong>, as speaking ill of them is strictly against the law.</li>
+        <li><strong>Add polite particles</strong> ("Krap" for men, "Ka" for women) to the end of your sentences.</li>
+        <li><strong>Share meals family-style</strong>, taking only small portions from the central dishes at a time.</li>
+        <li><strong>Use your right hand</strong> to pass money or food, as the left hand is traditionally considered unclean.</li>
+        <li><strong>Keep your feet pointed away</strong> from people, monks, and religious objects, as feet are seen as the lowest part of the body.</li>
+        <li><strong>Maintain a "cool heart" (Jai Yen)</strong> by avoiding public outbursts or losing your temper.</li>
+        <li><strong>Stand completely still</strong> if you hear the National Anthem playing in public spaces, which typically occurs at 8 AM and 6 PM.</li>
+        <li><strong>Respect monastic rules:</strong> Women should never physically touch a Buddhist monk or hand items directly to them.</li>
+        <li><strong>Embrace the "Mai pen rai" (no worries) mindset</strong>, keeping a flexible and relaxed attitude toward daily inconveniences.</li>
+        <li><strong>Eat with a spoon and fork:</strong> Hold the spoon in your right hand and use the left fork to push food onto it. Chopsticks are for noodle soups.</li>
+        <li><strong>Dispose of toilet paper in the provided bin</strong> rather than flushing it, and utilize the bidet sprayer (the "bum gun") instead.</li>
+        <li><strong>Leave a small tip (20–50 baht)</strong> for good service, though standard Western-style tipping is not mandatory.</li>
+        <li><strong>Treat Buddha images with deep reverence;</strong> never pose disrespectfully with them or purchase them merely as casual home decor.</li>
+        <li><strong>Keep public displays of affection modest;</strong> holding hands is perfectly acceptable, but overt kissing is frowned upon.</li>
+        <li><strong>The "Golden Rule" of utensils:</strong> Hold the spoon in your right hand and the fork in your left. Use the fork only to push food onto the spoon — <strong>never put the fork in your mouth.</strong></li>
+        <li><strong>Chopsticks have a specific place:</strong> Reserve chopsticks only for noodle soups; they are rarely used for rice or stir-fried dishes.</li>
+        <li><strong>Wait for the host:</strong> In traditional settings, it is polite to wait for the eldest person at the table to take the first bite before you begin your meal.</li>
+        <li><strong>Mind your trash:</strong> If you are eating street food, look for the designated bin. Never leave trash on the table, even if you see others do it.</li>
+        <li><strong>The "Bum Gun" etiquette:</strong> If you see a small sprayer next to the toilet, it is for personal hygiene. Aim away from the floor and walls to avoid making a mess for the next person!</li>
+        <li><strong>Shared dishes are the norm:</strong> When eating with others, you are expected to share. Everyone usually orders different dishes for the table, and you take small portions of each onto your own plate of rice.</li>
+        <li><strong>Respect the bill:</strong> In social settings, it is common for the person who invited the group or the senior person to pay for the meal. Do not insist on "splitting the check", this can be seen as awkward.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-tabs">
+    <button class="sec-btn active" onclick="switchSection('words',this)">📖 Words</button>
+    <button class="sec-btn" onclick="switchSection('sentences',this)">💬 Sentences</button>
+    <button class="sec-btn" onclick="switchSection('emergency',this)">🚨 Emergency</button>
+  </div>
+
+  <!-- WORDS -->
+  <div id="sec-words" class="section-content active">
+    <p style="color:var(--ink-muted);font-style:italic;font-size:0.9rem;margin-bottom:1rem;">💡 Romanization shown below each word to help with pronunciation.</p>
+    <div class="search-bar">
+      <input class="search-input" type="text" placeholder="Search words..." oninput="filterWords(this.value)">
+    </div>
+    <div id="word-categories"></div>
+  </div>
+
+  <!-- SENTENCES -->
+  <div id="sec-sentences" class="section-content">
+    <div id="sentence-groups"></div>
+  </div>
+
+  <!-- EMERGENCY -->
+  <div id="sec-emergency" class="section-content">
+    <p style="color:var(--rose);font-weight:700;margin-bottom:1rem;font-size:1.05rem;">⚠️ Save this page offline for emergencies. Tap 🔊 to hear the phrase spoken aloud.</p>
+    <div class="emergency-grid" id="emergency-grid"></div>
+  </div>
+
+</main>
+
+<footer>Built for the <span>wandering soul</span> — free forever, hosted on GitHub Pages.</footer>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'th',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+// ── SUPER-SECTION DEFINITIONS ──
+// Each group has a label, accent class, open-by-default flag, and list of category keys
+const SUPER_SECTIONS = [
+  {
+    label: '🚀 Core Essentials',
+    cls: 'super-core',
+    openByDefault: true,
+    cats: ['💬 Social', '🚨 Survival', '❓ Question Words', '🙏 Polite Particles', '🏃 Essential Verbs']
+  },
+  {
+    label: '📍 Daily Life',
+    cls: 'super-daily',
+    openByDefault: false,
+    cats: ['🍜 Food & Drink', '🚌 Transport', '💰 Money & Shopping', '🏠 Housing', '❤️ Health', '🔢 Numbers & Time', '📅 Days & Months']
+  },
+  {
+    label: '🧠 Language Building',
+    cls: 'super-language',
+    openByDefault: false,
+    cats: ['🧑‍🤝‍🧑 Pronouns & Pointers', '👨‍👩‍👧 Family & Relatives', '🎩 Titles & Address', '🎨 Colors & Adjectives', '📦 Common Classifiers', '🔢 Numbers 1–20']
+  },
+  {
+    label: '🎭 Culture & Vibes',
+    cls: 'super-culture',
+    openByDefault: false,
+    cats: ['👋 Greetings & Celebrations', '🎭 Feelings & States', '📺 Drama & Slang', '💖 Romance & Compliments', '🔥 Media & Internet Slang']
+  }
+];
+
+// ── SENTENCE GROUP DEFINITIONS ──
+const SENTENCE_GROUPS = [
+  {
+    label: '🚨 Emergencies & Safety',
+    indices: [8, 9, 25, 34, 35, 47, 48]
+  },
+  {
+    label: '🏥 Medical & Health',
+    indices: [0, 1, 19, 20, 49, 50]
+  },
+  {
+    label: '💰 Money, Shopping & Bargaining',
+    indices: [2, 3, 4, 5, 6, 21, 24, 27, 37, 51, 61, 62, 63, 72]
+  },
+  {
+    label: '🍜 Food & Ordering',
+    indices: [12, 13, 14, 30, 31, 32, 33, 59, 60, 64, 65, 66, 73]
+  },
+  {
+    label: '🚌 Transport & Getting Around',
+    indices: [10, 11, 38, 39, 40, 67, 68, 69]
+  },
+  {
+    label: '🏠 Accommodation',
+    indices: [23, 28, 29, 32, 33]
+  },
+  {
+    label: '💬 Social & Introductions',
+    indices: [15, 16, 17, 18, 22, 36, 41, 42, 43, 44, 45, 46, 53, 54, 70, 71, 74, 75, 76, 77, 78, 79]
+  },
+  {
+    label: '💖 Romance & Drama',
+    indices: [55, 56, 57, 58, 72, 73]
+  }
+];
+
+const LANG = {
+  voiceCode: 'th-TH',
+  voiceGender: 'female',
+  categories: {
+   '👋 Greetings & Celebrations': { 
+      cls: 'cat-greetings', 
+      words: [
+        {en: 'Good morning', tr: 'อรุณสวัสดิ์', rom: 'Arun sawat'},
+        {en: 'Good afternoon', tr: 'สวัสดีตอนบ่าย', rom: 'Sawatdi ton baai'},
+        {en: 'Good evening', tr: 'สวัสดีตอนเย็น', rom: 'Sawatdi ton yen'},
+        {en: 'Good night', tr: 'ราตรีสวัสดิ์', rom: 'Raatrii sawat'},
+        {en: 'Welcome', tr: 'ยินดีต้อนรับ', rom: 'Yindii tônráp'},
+        {en: 'How are you?', tr: 'สบายดีไหม', rom: 'Sabaai dii mǎi'},
+        {en: 'I am fine', tr: 'สบายดี', rom: 'Sabaai dii'},
+        {en: 'See you later', tr: 'แล้วพบกันใหม่', rom: 'Láew phóp kan mài'},
+        {en: 'Good luck', tr: 'โชคดี', rom: 'Chôok dii'},
+        {en: 'Happy New Year', tr: 'สวัสดีปีใหม่', rom: 'Sawatdi pii mai'},
+        {en: 'Happy Birthday', tr: 'สุขสันต์วันเกิด', rom: 'Sùksǎn wan koet'},
+        {en: 'Merry Christmas', tr: 'สุขสันต์วันคริสต์มาส', rom: 'Sùksǎn wan Khristmaat'},
+        {en: 'Happy Songkran', tr: 'สุขสันต์วันสงกรานต์', rom: 'Sùksǎn wan Songkraan'},
+        {en: 'Congratulations', tr: 'ขอแสดงความยินดี', rom: 'Khǒo sadaeng khwaam yindii'},
+      ]
+    },
+    '🧑‍🤝‍🧑 Pronouns & Pointers': { 
+      cls: 'cat-pronouns', 
+      words: [
+        {en: 'I (female)', tr: 'ฉัน', rom: 'Chǎn'},
+        {en: 'I (male)', tr: 'ผม', rom: 'Phǒm'},
+        {en: 'You (polite)', tr: 'คุณ', rom: 'Khun'},
+        {en: 'He', tr: 'เขา', rom: 'Khǎo'},
+        {en: 'She', tr: 'เธอ', rom: 'Thoe'},
+        {en: 'It', tr: 'มัน', rom: 'Man'},
+        {en: 'We', tr: 'เรา', rom: 'Rao'},
+        {en: 'They', tr: 'พวกเขา', rom: 'Phûak khǎo'},
+        {en: 'My / Mine', tr: 'ของฉัน', rom: 'Khǒng chǎn'},
+        {en: 'Your / Yours', tr: 'ของคุณ', rom: 'Khǒng khun'},
+        {en: 'This', tr: 'นี่', rom: 'Nîi'},
+        {en: 'That', tr: 'นั่น', rom: 'Nân'},
+        {en: 'Here', tr: 'ที่นี่', rom: 'Thîi nîi'},
+        {en: 'There', tr: 'ที่นั่น', rom: 'Thîi nân'},
+        {en: 'I (cute/intimate)', tr: 'เค้า', rom: 'Kháo'},
+        {en: 'You (cute/intimate)', tr: 'ตัวเอง', rom: 'Tua aeng'},
+        {en: 'I (informal/aggressive)', tr: 'กู', rom: 'Kuu'},
+        {en: 'You (informal/aggressive)', tr: 'มึง', rom: 'Mueng'},
+        {en: 'Senior / Older sibling', tr: 'พี่', rom: 'Phîi'},
+        {en: 'Junior / Younger sibling', tr: 'น้อง', rom: 'Nóong'},
+      ]
+    },
+    '👨‍👩‍👧 Family & Relatives': { 
+      cls: 'cat-social',
+      words: [
+        {en: 'Mother', tr: 'แม่', rom: 'Mâe'},
+        {en: 'Father', tr: 'พ่อ', rom: 'Phôo'},
+        {en: 'Older Sibling', tr: 'พี่', rom: 'Phîi'},
+        {en: 'Younger Sibling', tr: 'น้อง', rom: 'Nóong'},
+        {en: 'Grandfather (Paternal)', tr: 'ปู่', rom: 'Pùu'},
+        {en: 'Grandmother (Paternal)', tr: 'ย่า', rom: 'Yâa'},
+        {en: 'Grandfather (Maternal)', tr: 'ตา', rom: 'Taa'},
+        {en: 'Grandmother (Maternal)', tr: 'ยาย', rom: 'Yaai'},
+        {en: 'Child', tr: 'ลูก', rom: 'Lûuk'},
+        {en: 'Aunt', tr: 'ป้า', rom: 'Pâa'},
+        {en: 'Uncle', tr: 'ลุง', rom: 'Lung'},
+      ]
+    },
+    '❓ Question Words': { 
+      cls: 'cat-questions', 
+      words: [
+        {en: 'Who', tr: 'ใคร', rom: 'Khrai'},
+        {en: 'What', tr: 'อะไร', rom: 'Arai'},
+        {en: 'When', tr: 'เมื่อไหร่', rom: 'Mûea rài'},
+        {en: 'Where', tr: 'ที่ไหน', rom: 'Thîi nǎi'},
+        {en: 'Why', tr: 'ทำไม', rom: 'Thammai'},
+        {en: 'How', tr: 'อย่างไร', rom: 'Yàang rai'},
+        {en: 'How much', tr: 'เท่าไหร่', rom: 'Thâo rài'},
+        {en: 'How many', tr: 'กี่', rom: 'Kîi'},
+        {en: 'How long (time)', tr: 'นานแค่ไหน', rom: 'Naan khâe nǎi'},
+        {en: 'What time', tr: 'กี่โมง', rom: 'Kîi moong'},
+        {en: 'Which', tr: 'อันไหน', rom: 'An nǎi'},
+        {en: 'Whose', tr: 'ของใคร', rom: 'Khǒng khrai'},
+      ]
+    },
+    '🎩 Titles & Address': { 
+      cls: 'cat-titles', 
+      words: [
+        {en: 'Mr.', tr: 'นาย', rom: 'Naai'},
+        {en: 'Mrs.', tr: 'นาง', rom: 'Naang'},
+        {en: 'Miss', tr: 'นางสาว', rom: 'Naang sǎao'},
+        {en: 'Doctor', tr: 'คุณหมอ', rom: 'Khun mǒr'},
+        {en: 'Teacher', tr: 'อาจารย์', rom: 'Aajaan'},
+        {en: 'Friend (close)', tr: 'เพื่อน', rom: 'Phûean'},
+        {en: 'Elder (respectful)', tr: 'พี่', rom: 'Phîi'},
+        {en: 'Younger person', tr: 'น้อง', rom: 'Nóong'},
+        {en: 'Sir / Ma\'am', tr: 'คุณ', rom: 'Khun'},
+        {en: 'Boss', tr: 'เจ้านาย', rom: 'Jâo naai'},
+        {en: 'Man', tr: 'ผู้ชาย', rom: 'Phûu chaai'},
+        {en: 'Woman', tr: 'ผู้หญิง', rom: 'Phûu yǐng'},
+        {en: 'Child', tr: 'เด็ก', rom: 'Dèk'},
+      ]
+    },
+    '🔢 Numbers 1–20': { 
+      cls: 'cat-numbers20', 
+      isNumberDrill: true, 
+      words: [
+        {en: '0', tr: 'ศูนย์', rom: 'Sǔun'},
+        {en: '1', tr: 'หนึ่ง', rom: 'Nùeng'},{en: '2', tr: 'สอง', rom: 'Sǒng'},{en: '3', tr: 'สาม', rom: 'Sǎam'},
+        {en: '4', tr: 'สี่', rom: 'Sìi'},{en: '5', tr: 'ห้า', rom: 'Hâa'},{en: '6', tr: 'หก', rom: 'Hòk'},
+        {en: '7', tr: 'เจ็ด', rom: 'Jèt'},{en: '8', tr: 'แปด', rom: 'Pàet'},{en: '9', tr: 'เก้า', rom: 'Kâo'},
+        {en: '10', tr: 'สิบ', rom: 'Sìp'},{en: '11', tr: 'สิบเอ็ด', rom: 'Sìp èt'},{en: '12', tr: 'สิบสอง', rom: 'Sìp sǒng'},
+        {en: '13', tr: 'สิบสาม', rom: 'Sìp sǎam'},{en: '14', tr: 'สิบสี่', rom: 'Sìp sìi'},{en: '15', tr: 'สิบห้า', rom: 'Sìp hâa'},
+        {en: '16', tr: 'สิบหก', rom: 'Sìp hòk'},{en: '17', tr: 'สิบเจ็ด', rom: 'Sìp jèt'},{en: '18', tr: 'สิบแปด', rom: 'Sìp pàet'},
+        {en: '19', tr: 'สิบเก้า', rom: 'Sìp kâo'},{en: '20', tr: 'ยี่สิบ', rom: 'Yîi sìp'},
+      ]
+    },
+    '🏃 Essential Verbs': { 
+      cls: 'cat-transport',
+      words: [
+        {en: 'To go', tr: 'ไป', rom: 'Pai'},
+        {en: 'To come', tr: 'มา', rom: 'Maa'},
+        {en: 'To eat', tr: 'กิน', rom: 'Kin'},
+        {en: 'To drink', tr: 'ดื่ม', rom: 'Dùuem'},
+        {en: 'To sleep', tr: 'นอน', rom: 'Noon'},
+        {en: 'To do / make', tr: 'ทำ', rom: 'Tham'},
+        {en: 'To see / watch', tr: 'ดู', rom: 'Duu'},
+        {en: 'To speak', tr: 'พูด', rom: 'Phûut'},
+        {en: 'To want (an object)', tr: 'เอา', rom: 'Ao'},
+        {en: 'To want (to do something)', tr: 'อยาก', rom: 'Yàak'},
+        {en: 'To have', tr: 'มี', rom: 'Mii'},
+        {en: 'To know (information)', tr: 'รู้', rom: 'Rúu'},
+      ]
+    },
+    '🚨 Survival': { 
+      cls: 'cat-survival', 
+      words: [
+        {en: 'Help', tr: 'ช่วยด้วย', rom: 'Chûay dûay'},
+        {en: 'Emergency', tr: 'เหตุฉุกเฉิน', rom: 'Hèt chùk choen'},
+        {en: 'Police', tr: 'ตำรวจ', rom: 'Tamrùat'},
+        {en: 'Hospital', tr: 'โรงพยาบาล', rom: 'Rong phayabaan'},
+        {en: 'Doctor', tr: 'หมอ', rom: 'Mǒr'},
+        {en: 'Pharmacy', tr: 'ร้านขายยา', rom: 'Ráan khǎai yaa'},
+        {en: 'Ambulance', tr: 'รถพยาบาล', rom: 'Rót phayabaan'},
+        {en: 'Fire', tr: 'ไฟไหม้', rom: 'Fai mâi'},
+        {en: 'Danger', tr: 'อันตราย', rom: 'Antaraai'},
+        {en: 'Safe', tr: 'ปลอดภัย', rom: 'Plòt phai'},
+        {en: 'Watch out!', tr: 'ระวัง!', rom: 'Rá-wang!'},
+        {en: 'Stop', tr: 'หยุด', rom: 'Yùt'},
+        {en: 'Passport', tr: 'หนังสือเดินทาง', rom: 'Nǎngsǔe doenthaang'},
+        {en: 'Embassy', tr: 'สถานทูต', rom: 'Sathaan thûut'},
+        {en: 'Lost', tr: 'หลงทาง', rom: 'Lǒng thaang'},
+        {en: 'Thief', tr: 'ขโมย', rom: 'Kha moi'},
+        {en: 'Accident', tr: 'อุบัติเหตุ', rom: 'Ubatti het'},
+      ]
+    },
+    '🔢 Numbers & Time': { 
+      cls: 'cat-numbers', 
+      words: [
+        {en: 'One', tr: 'หนึ่ง', rom: 'Nùeng'},
+        {en: 'Two', tr: 'สอง', rom: 'Sǒng'},
+        {en: 'Three', tr: 'สาม', rom: 'Sǎam'},
+        {en: 'Four', tr: 'สี่', rom: 'Sìi'},
+        {en: 'Five', tr: 'ห้า', rom: 'Hâa'},
+        {en: 'Ten', tr: 'สิบ', rom: 'Sip'},
+        {en: 'Hundred', tr: 'ร้อย', rom: 'Róoi'},
+        {en: 'Thousand', tr: 'พัน', rom: 'Phan'},
+        {en: 'Ten Thousand', tr: 'หมื่น', rom: 'Mùoen'},
+        {en: 'Today', tr: 'วันนี้', rom: 'Wan níi'},
+        {en: 'Tomorrow', tr: 'พรุ่งนี้', rom: 'Phrûng níi'},
+        {en: 'Yesterday', tr: 'เมื่อวาน', rom: 'Mûea waan'},
+        {en: 'Now', tr: 'ตอนนี้', rom: 'Toon níi'},
+        {en: 'Morning', tr: 'เช้า', rom: 'Cháo'},
+        {en: 'Afternoon', tr: 'บ่าย', rom: 'Bàai'},
+        {en: 'Evening', tr: 'เย็น', rom: 'Yen'},
+        {en: 'Night', tr: 'คืน', rom: 'Khuuen'},
+        {en: 'Minute', tr: 'นาที', rom: 'Naathii'},
+        {en: 'Hour', tr: 'ชั่วโมง', rom: 'Chûa moong'},
+        {en: 'Day', tr: 'วัน', rom: 'Wan'},
+        {en: 'Week', tr: 'สัปดาห์', rom: 'Sapdaa'},
+        {en: 'Month', tr: 'เดือน', rom: 'Duean'},
+        {en: 'Year', tr: 'ปี', rom: 'Pii'},
+      ]
+    },
+    '🎭 Feelings & States': { 
+      cls: 'cat-health',
+      words: [
+        {en: 'Hungry', tr: 'หิว', rom: 'Hǐu'},
+        {en: 'Thirsty', tr: 'หิวน้ำ', rom: 'Hǐu náam'},
+        {en: 'Tired', tr: 'เหนื่อย', rom: 'Nùeay'},
+        {en: 'Sleepy', tr: 'ง่วง', rom: 'Ngûang'},
+        {en: 'Scared', tr: 'กลัว', rom: 'Klua'},
+        {en: 'Angry', tr: 'โกรธ', rom: 'Kròot'},
+        {en: 'Sad', tr: 'เศร้า', rom: 'Sâo'},
+        {en: 'Fun / Enjoyable', tr: 'สนุก', rom: 'Sanùk'},
+        {en: 'Bored', tr: 'เบื่อ', rom: 'Bùea'},
+        {en: 'Hot', tr: 'ร้อน', rom: 'Róon'},
+        {en: 'Cold', tr: 'หนาว', rom: 'Nǎao'},
+      ]
+    },
+    '🍜 Food & Drink': { 
+      cls: 'cat-food', 
+      words: [
+        {en: 'Water', tr: 'น้ำ', rom: 'Náam'},
+        {en: 'Ice', tr: 'น้ำแข็ง', rom: 'Náam khǎeng'},
+        {en: 'Food', tr: 'อาหาร', rom: 'Aahǎan'},
+        {en: 'Rice', tr: 'ข้าว', rom: 'Khâao'},
+        {en: 'Noodles', tr: 'ก๋วยเตี๋ยว', rom: 'Kǔay tǐao'},
+        {en: 'Spicy', tr: 'เผ็ด', rom: 'Phèt'},
+        {en: 'Not spicy', tr: 'ไม่เผ็ด', rom: 'Mâi phèt'},
+        {en: 'A little spicy', tr: 'เผ็ดนิดหน่อย', rom: 'Phèt nít nòi'},
+        {en: 'Sweet', tr: 'หวาน', rom: 'Wǎan'},
+        {en: 'Sour', tr: 'เปรี้ยว', rom: 'Prîao'},
+        {en: 'Delicious', tr: 'อร่อย', rom: 'Aròi'},
+        {en: 'Vegetarian', tr: 'มังสวิรัติ', rom: 'Mangsawirat'},
+        {en: 'Allergy', tr: 'แพ้', rom: 'Pháe'},
+        {en: 'Restaurant', tr: 'ร้านอาหาร', rom: 'Ráan aahǎan'},
+        {en: 'Market', tr: 'ตลาด', rom: 'Talàat'},
+        {en: 'Coffee', tr: 'กาแฟ', rom: 'Kaafae'},
+        {en: 'Tea', tr: 'ชา', rom: 'Chaa'},
+        {en: 'Beer', tr: 'เบียร์', rom: 'Bia'},
+        {en: 'Chicken', tr: 'ไก่', rom: 'Kài'},
+        {en: 'Pork', tr: 'หมู', rom: 'Mǔu'},
+        {en: 'Beef', tr: 'เนื้อวัว', rom: 'Núea wua'},
+        {en: 'Fish', tr: 'ปลา', rom: 'Plaa'},
+        {en: 'Shrimp', tr: 'กุ้ง', rom: 'Kûng'},
+        {en: 'Egg', tr: 'ไข่', rom: 'Khài'},
+        {en: 'Vegetable', tr: 'ผัก', rom: 'Phàk'},
+        {en: 'Fruit', tr: 'ผลไม้', rom: 'Phǒnlamáai'},
+      ]
+    },
+    '🚌 Transport': { 
+      cls: 'cat-transport', 
+      words: [
+        {en: 'Where', tr: 'ที่ไหน', rom: 'Thîi nǎi'},
+        {en: 'How far', tr: 'ไกลแค่ไหน', rom: 'Klai khâe nǎi'},
+        {en: 'Ticket', tr: 'ตั๋ว', rom: 'Tǔa'},
+        {en: 'Station', tr: 'สถานี', rom: 'Sathǎanii'},
+        {en: 'Taxi', tr: 'แท็กซี่', rom: 'Tháeksi'},
+        {en: 'Bus', tr: 'รถเมล์', rom: 'Rót mee'},
+        {en: 'Train', tr: 'รถไฟ', rom: 'Rót fai'},
+        {en: 'Skytrain (BTS)', tr: 'รถไฟฟ้า', rom: 'Rót fai fáa'},
+        {en: 'Subway (MRT)', tr: 'รถไฟใต้ดิน', rom: 'Rót fai tâi din'},
+        {en: 'Airport', tr: 'สนามบิน', rom: 'Sanǎam bin'},
+        {en: 'Hotel', tr: 'โรงแรม', rom: 'Rong raem'},
+        {en: 'Left', tr: 'ซ้าย', rom: 'Sáai'},
+        {en: 'Right', tr: 'ขวา', rom: 'Khwǎa'},
+        {en: 'Straight', tr: 'ตรงไป', rom: 'Trong pai'},
+        {en: 'Turn around', tr: 'กลับรถ', rom: 'Klàp rót'},
+        {en: 'Stop', tr: 'จอด', rom: 'Jòot'},
+        {en: 'Near', tr: 'ใกล้', rom: 'Klâi'},
+        {en: 'Far', tr: 'ไกล', rom: 'Klai'},
+        {en: 'Motorbike', tr: 'มอเตอร์ไซค์', rom: 'Mortoe sai'},
+        {en: 'Tuk-tuk', tr: 'ตุ๊กตุ๊ก', rom: 'Túk túk'},
+      ]
+    },
+    '💬 Social': { 
+      cls: 'cat-social', 
+      words: [
+        {en: 'Hello', tr: 'สวัสดี', rom: 'Sawàtdi'},
+        {en: 'Thank you', tr: 'ขอบคุณ', rom: 'Khòp khun'},
+        {en: 'Sorry / Excuse me', tr: 'ขอโทษ', rom: 'Khǒo thôot'},
+        {en: 'No problem / It\'s okay', tr: 'ไม่เป็นไร', rom: 'Mâi pen rai'},
+        {en: 'Yes', tr: 'ใช่', rom: 'Châi'},
+        {en: 'No', tr: 'ไม่', rom: 'Mâi'},
+        {en: 'Please', tr: 'กรุณา', rom: 'Karunaa'},
+        {en: 'Goodbye', tr: 'ลาก่อน', rom: 'Laa kòon'},
+        {en: 'Friend', tr: 'เพื่อน', rom: 'Phûean'},
+        {en: 'Beautiful', tr: 'สวย', rom: 'Sǔay'},
+        {en: 'Handsome', tr: 'หล่อ', rom: 'Lòo'},
+        {en: 'Good', tr: 'ดี', rom: 'Dii'},
+        {en: 'Bad', tr: 'แย่', rom: 'Yâe'},
+        {en: 'Happy', tr: 'มีความสุข', rom: 'Mii khwaam sùk'},
+        {en: 'Name', tr: 'ชื่อ', rom: 'Chûue'},
+        {en: 'I don\'t understand', tr: 'ไม่เข้าใจ', rom: 'Mâi khâo jai'},
+        {en: 'Do you understand?', tr: 'เข้าใจไหม', rom: 'Khâo jai mǎi'},
+      ]
+    },
+    '💰 Money & Shopping': { 
+      cls: 'cat-money', 
+      words: [
+        {en: 'Money', tr: 'เงิน', rom: 'Ngoen'},
+        {en: 'Price', tr: 'ราคา', rom: 'Raakhaa'},
+        {en: 'Cheap', tr: 'ถูก', rom: 'Thùuk'},
+        {en: 'Expensive', tr: 'แพง', rom: 'Phaeng'},
+        {en: 'Buy', tr: 'ซื้อ', rom: 'Súue'},
+        {en: 'Sell', tr: 'ขาย', rom: 'Khǎai'},
+        {en: 'Discount', tr: 'ลดราคา', rom: 'Lót raakhaa'},
+        {en: 'Change (money)', tr: 'เงินทอน', rom: 'Ngoen thoon'},
+        {en: 'ATM', tr: 'ตู้เอทีเอ็ม', rom: 'Tûu ATM'},
+        {en: 'Bank', tr: 'ธนาคาร', rom: 'Thanaakhaan'},
+        {en: 'Receipt', tr: 'ใบเสร็จ', rom: 'Bai sèt'},
+        {en: 'Card', tr: 'บัตร', rom: 'Bàt'},
+        {en: 'Cash', tr: 'เงินสด', rom: 'Ngoen sòt'},
+        {en: 'Bag', tr: 'ถุง', rom: 'Thǔng'},
+      ]
+    },
+    '🏠 Housing': { 
+      cls: 'cat-housing', 
+      words: [
+        {en: 'House', tr: 'บ้าน', rom: 'Bâan'},
+        {en: 'Rent', tr: 'เช่า', rom: 'Châo'},
+        {en: 'Room', tr: 'ห้อง', rom: 'Hông'},
+        {en: 'Bedroom', tr: 'ห้องนอน', rom: 'Hông noon'},
+        {en: 'Bathroom', tr: 'ห้องน้ำ', rom: 'Hông náam'},
+        {en: 'Bed', tr: 'เตียง', rom: 'Tiang'},
+        {en: 'Blanket', tr: 'ผ้าห่ม', rom: 'Phâa hòm'},
+        {en: 'Towel', tr: 'ผ้าเช็ดตัว', rom: 'Phâa chét tua'},
+        {en: 'Toilet paper', tr: 'กระดาษชำระ', rom: 'Kradàat chamrá'},
+        {en: 'WiFi', tr: 'ไวไฟ', rom: 'Wai fai'},
+        {en: 'Key', tr: 'กุญแจ', rom: 'Kunjaee'},
+        {en: 'Contract', tr: 'สัญญา', rom: 'Sǎnyaa'},
+        {en: 'Landlord', tr: 'เจ้าของบ้าน', rom: 'Jâo khǒong bâan'},
+        {en: 'Electricity', tr: 'ไฟฟ้า', rom: 'Fai fáa'},
+        {en: 'Water supply', tr: 'น้ำประปา', rom: 'Náam prapaa'},
+        {en: 'Air con', tr: 'แอร์', rom: 'Ae'},
+      ]
+    },
+    '📺 Drama & Slang': { 
+      cls: 'cat-media', 
+      words: [
+        {en: 'Really? / Seriously?', tr: 'จริงเหรอ', rom: 'Jing rǒe'},
+        {en: 'Crazy!', tr: 'บ้า', rom: 'Bâa'},
+        {en: 'What the heck?', tr: 'อะไรเนี่ย', rom: 'Arai nîa'},
+        {en: 'Oh my god! / Oops!', tr: 'อุ๊ย', rom: 'Úi'},
+        {en: 'Never mind / Let it go', tr: 'ช่างมันเถอะ', rom: 'Châang man thòe'},
+        {en: 'Keep fighting! / Cheer up!', tr: 'สู้ๆ', rom: 'Sûu sûu'},
+        {en: 'Liar', tr: 'คนโกหก', rom: 'Khon koo-hòk'},
+        {en: 'Secret', tr: 'ความลับ', rom: 'Khwaam láp'},
+        {en: 'Cute', tr: 'น่ารัก', rom: 'Nâa rák'},
+        {en: 'Heart', tr: 'หัวใจ', rom: 'Hǔa jai'},
+        {en: 'Boyfriend / Girlfriend', tr: 'แฟน', rom: 'Faen'},
+        {en: 'To flirt', tr: 'จีบ', rom: 'Jìip'},
+        {en: 'Ghost', tr: 'ผี', rom: 'Phǐi'},
+        {en: 'Satisfying / "The feels"', tr: 'ฟิน', rom: 'Fin'},
+        {en: 'To sulk / Pout (playfully)', tr: 'งอน', rom: 'Ngoon'},
+        {en: 'To make up / Beg for forgiveness', tr: 'ง้อ', rom: 'Ngóo'},
+        {en: 'To dump / Ditch someone', tr: 'เท', rom: 'Thee'},
+        {en: 'Awesome / Bang on!', tr: 'ปัง', rom: 'Pang'},
+        {en: 'Over the top / Exaggerated', tr: 'เว่อร์', rom: 'Wôe'},
+        {en: 'Side piece / Casual fling', tr: 'กิ๊ก', rom: 'Kík'},
+        {en: 'Shameless', tr: 'หน้าด้าน', rom: 'Nâa dâan'},
+        {en: 'Oh man / Ugh!', tr: 'โอ๊ย', rom: 'Óoi'},
+        {en: 'Chill / Easy going', tr: 'ชิวๆ', rom: 'Chiu chiu'},
+        {en: 'Messy / Chaotic', tr: 'วุ่นวาย', rom: 'Wûn-waai'},
+        {en: 'Jealous (romantic)', tr: 'หึง', rom: 'Hǔeng'},
+        {en: 'Jealous (envious)', tr: 'อิจฉา', rom: 'Ìt-chǎa'},
+        {en: 'Nerd / Geek', tr: 'เด็กเนิร์ด', rom: 'Dèk nóet'},
+        {en: 'To ship (a couple)', tr: 'จิ้น', rom: 'Jîn'},
+      ]
+    },
+    '❤️ Health': { 
+      cls: 'cat-health', 
+      words: [
+        {en: 'Pain / Ache', tr: 'ปวด', rom: 'Pùat'},
+        {en: 'Fever', tr: 'ไข้', rom: 'Khâi'},
+        {en: 'Cold / Flu', tr: 'หวัด', rom: 'Wàt'},
+        {en: 'Medicine', tr: 'ยา', rom: 'Yaa'},
+        {en: 'Sick', tr: 'ป่วย', rom: 'Pûay'},
+        {en: 'Headache', tr: 'ปวดหัว', rom: 'Pùat hǔa'},
+        {en: 'Stomachache', tr: 'ปวดท้อง', rom: 'Pùat thóong'},
+        {en: 'Diarrhea', tr: 'ท้องเสีย', rom: 'Thóong sǐa'},
+        {en: 'Blood', tr: 'เลือด', rom: 'Lûeat'},
+        {en: 'Dentist', tr: 'หมอฟัน', rom: 'Mǒr fan'},
+        {en: 'Insurance', tr: 'ประกัน', rom: 'Pràkan'},
+        {en: 'Prescription', tr: 'ใบสั่งยา', rom: 'Bai sàng yaa'},
+      ]
+    },
+    '🙏 Polite Particles': { 
+      cls: 'cat-particles', 
+      words: [
+        {en: 'Polite particle (male speaker)', tr: 'ครับ', rom: 'Khráp'},
+        {en: 'Polite particle (female speaker)', tr: 'ค่ะ', rom: 'Khâ'},
+        {en: 'Polite question particle (female)', tr: 'คะ', rom: 'Khá'},
+        {en: 'Polite particle (gender neutral/slang)', tr: 'ฮะ', rom: 'Há'},
+        {en: 'Agreeing / "Yes" (casual)', tr: 'อืม', rom: 'Uem'},
+      ]
+    },
+    '📅 Days & Months': { 
+      cls: 'cat-calendar', 
+      words: [
+        {en: 'Monday', tr: 'วันจันทร์', rom: 'Wan jan'},
+        {en: 'Tuesday', tr: 'วันอังคาร', rom: 'Wan ang-khaan'},
+        {en: 'Wednesday', tr: 'วันพุธ', rom: 'Wan phút'},
+        {en: 'Thursday', tr: 'วันพฤหัสบดี', rom: 'Wan pharúe-hàt'},
+        {en: 'Friday', tr: 'วันศุกร์', rom: 'Wan sùk'},
+        {en: 'Saturday', tr: 'วันเสาร์', rom: 'Wan sǎo'},
+        {en: 'Sunday', tr: 'วันอาทิตย์', rom: 'Wan aa-thít'},
+        {en: 'January', tr: 'มกราคม', rom: 'Má-kà-raa-khom'},
+        {en: 'February', tr: 'กุมภาพันธ์', rom: 'Kum-phaa-phan'},
+        {en: 'March', tr: 'มีนาคม', rom: 'Mii-naa-khom'},
+        {en: 'April', tr: 'เมษายน', rom: 'Mee-sǎa-yon'},
+        {en: 'May', tr: 'พฤษภาคม', rom: 'Phrúet-sà-phaa-khom'},
+        {en: 'June', tr: 'มิถุนายน', rom: 'Mí-thù-naa-yon'},
+        {en: 'July', tr: 'กรกฎาคม', rom: 'Kà-rá-kà-daa-khom'},
+        {en: 'August', tr: 'สิงหาคม', rom: 'Sǐng-hǎa-khom'},
+        {en: 'September', tr: 'กันยายน', rom: 'Kan-yaa-yon'},
+        {en: 'October', tr: 'ตุลาคม', rom: 'Tù-laa-khom'},
+        {en: 'November', tr: 'พฤศจิกายน', rom: 'Phrúet-sà-jì-kaa-yon'},
+        {en: 'December', tr: 'ธันวาคม', rom: 'Than-waa-khom'},
+      ]
+    },
+    '🎨 Colors & Adjectives': { 
+      cls: 'cat-colors', 
+      words: [
+        {en: 'Color', tr: 'สี', rom: 'Sǐi'},
+        {en: 'Red', tr: 'สีแดง', rom: 'Sǐi daeng'},
+        {en: 'Blue', tr: 'สีน้ำเงิน', rom: 'Sǐi náam-ngoen'},
+        {en: 'Light Blue', tr: 'สีฟ้า', rom: 'Sǐi fáa'},
+        {en: 'Green', tr: 'สีเขียว', rom: 'Sǐi khǐao'},
+        {en: 'Yellow', tr: 'สีเหลือง', rom: 'Sǐi lǔeang'},
+        {en: 'Black', tr: 'สีดำ', rom: 'Sǐi dam'},
+        {en: 'White', tr: 'สีขาว', rom: 'Sǐi khǎao'},
+        {en: 'Big', tr: 'ใหญ่', rom: 'Yài'},
+        {en: 'Small', tr: 'เล็ก', rom: 'Lék'},
+        {en: 'Fast', tr: 'เร็ว', rom: 'Reo'},
+        {en: 'Slow', tr: 'ช้า', rom: 'Cháa'},
+        {en: 'Hot (weather/things)', tr: 'ร้อน', rom: 'Róon'},
+        {en: 'Cold (weather)', tr: 'หนาว', rom: 'Nǎao'},
+        {en: 'Cold (drinks/objects)', tr: 'เย็น', rom: 'Yen'},
+      ]
+    },
+    '💖 Romance & Compliments': { 
+      cls: 'cat-health', 
+      words: [
+        {en: 'Darling / Sweetheart', tr: 'ที่รัก', rom: 'Thîi rák'},
+        {en: 'You are beautiful', tr: 'คุณสวยมาก', rom: 'Khun sǔay mâak'},
+        {en: 'You are handsome', tr: 'คุณหล่อมาก', rom: 'Khun lòo mâak'},
+        {en: 'You are so cute', tr: 'น่ารักจัง', rom: 'Nâa rák jang'},
+        {en: 'You have a beautiful smile', tr: 'ยิ้มสวยนะ', rom: 'Yím sǔay ná'},
+        {en: 'I really like you', tr: 'ฉันชอบคุณมาก', rom: 'Chǎn chôop khun mâak'},
+        {en: 'I miss you so much', tr: 'คิดถึงมากนะ', rom: 'Khít thǔeng mâak ná'},
+        {en: 'Are you single?', tr: 'โสดไหม', rom: 'Sòot mǎi'},
+        {en: 'Can I have your Line ID?', tr: 'ขอไลน์ได้ไหม', rom: 'Khǒo Line dâi mǎi'},
+        {en: 'Can I have your number?', tr: 'ขอเบอร์ได้ไหม', rom: 'Khǒo booe dâi mǎi'},
+        {en: 'You look great today', tr: 'วันนี้ดูดีมาก', rom: 'Wan níi duu dii mâak'},
+        {en: 'My heart is yours', tr: 'หัวใจของฉันเป็นของคุณ', rom: 'Hǔa jai khǒng chǎn pen khǒng khun'},
+        {en: 'Soulmate', tr: 'เนื้อคู่', rom: 'Núea khûu'},
+        {en: 'Have you eaten yet? (Shows deep care)', tr: 'กินข้าวหรือยัง', rom: 'Kin khâao rǔe yang'},
+        {en: 'Take care of yourself', tr: 'ดูแลตัวเองด้วยนะ', rom: 'Duu-lae tua-aeng dûay ná'},
+        {en: 'Sweet dreams', tr: 'ฝันดีนะ', rom: 'Fǎn dii ná'},
+        {en: 'I am worried about you', tr: 'เป็นห่วงนะ', rom: 'Pen hùang ná'},
+        {en: 'You are very charming', tr: 'มีเสน่ห์มาก', rom: 'Mii sa-nèe mâak'},
+        {en: 'Are you free?', tr: 'ว่างไหม', rom: 'Wâang mǎi'},
+        {en: 'Can I treat you to a meal?', tr: 'ขอเลี้ยงข้าวได้ไหม', rom: 'Khǒo líang khâao dâi mǎi'},
+      ]
+    },
+    '🔥 Media & Internet Slang': { 
+      cls: 'cat-slang', 
+      words: [
+        {en: 'Top / "Seme"', tr: 'เมะ', rom: 'Mé'},
+        {en: 'Bottom / "Uke"', tr: 'เคะ', rom: 'Khé'},
+        {en: 'To top / be proactive', tr: 'รุก', rom: 'Rúk'},
+        {en: 'To bottom / be receptive', tr: 'รับ', rom: 'Ráp'},
+        {en: 'BL Fangirl / Fujoshi', tr: 'สาววาย', rom: 'Sǎao waai'},
+        {en: 'Shipped couple', tr: 'คู่จิ้น', rom: 'Khûu jîn'},
+        {en: 'Ghost ship (unlikely pairing)', tr: 'เรือผี', rom: 'Ruea phǐi'},
+        {en: 'Romantic moment / Spark', tr: 'โมเมนต์', rom: 'Moomén'},
+        {en: 'To be pranked or tricked (lit. curry)', tr: 'แกง', rom: 'Kaeng'},
+        {en: 'Annoying / Tedious (lit. longan fruit)', tr: 'ลำไย', rom: 'Lam-yai'},
+        {en: 'To fail in love / strike out (lit. bird)', tr: 'นก', rom: 'Nók'},
+        {en: 'Stunning / Leaves you speechless', tr: 'จึ้ง', rom: 'Jûeng'},
+        {en: 'Flop / Messed up / Terrible', tr: 'บ้ง', rom: 'Bông'},
+        {en: 'To slay / Dominate (lit. to whip)', tr: 'ฟาด', rom: 'Fâat'},
+        {en: 'Queen behavior / "She is Mother"', tr: 'ตัวมารดา', rom: 'Tua maan-daa'},
+        {en: 'About to go crazy (stressed/exasperated)', tr: 'จะเครซี่', rom: 'Jà khree-sîi'},
+        {en: 'Absolutely spectacular / Epic', tr: 'ปังปุริเย่', rom: 'Pang-pù-rí-yêe'},
+        {en: 'Spilling the tea / Gossiping', tr: 'เมาท์มอย', rom: 'Máo-mooi'},
+      ]
+    },
+    '📦 Common Classifiers': { 
+      cls: 'cat-classifiers', 
+      words: [
+        {en: 'People (e.g., 2 people)', tr: 'คน', rom: 'Khon'},
+        {en: 'Animals / Clothing / Furniture', tr: 'ตัว', rom: 'Tua'},
+        {en: 'Vehicles / Cars', tr: 'คัน', rom: 'Khan'},
+        {en: 'Machines / Electronics', tr: 'เครื่อง', rom: 'Khrûeang'},
+        {en: 'Books', tr: 'เล่ม', rom: 'Lêm'},
+        {en: 'Glasses / Cups', tr: 'แก้ว', rom: 'Kâeo'},
+        {en: 'Bottles', tr: 'ขวด', rom: 'Khùat'},
+        {en: 'Pieces / Items (general)', tr: 'ชิ้น', rom: 'Chín'},
+        {en: 'Plates / Bowls / Flat objects', tr: 'ใบ', rom: 'Bai'},
+      ]
+    }
+  },
+  sentences: [
+    {en: 'Where is the nearest hospital?', tr: 'โรงพยาบาลที่ใกล้ที่สุดอยู่ที่ไหน?', rom: 'Rong phayabaan thîi klâi thîi sùt yùu thîi nǎi?'},
+    {en: 'I need a doctor.', tr: 'ฉันต้องการพบหมอ', rom: 'Chǎn tôongkaan phóp mǒr'},
+    {en: 'How much does this cost?', tr: 'อันนี้ราคาเท่าไหร่?', rom: 'An níi raakhaa thâo rài?'},
+    {en: 'I would like this, please.', tr: 'เอาอันนี้ครับ/ค่ะ', rom: 'Ao an níi (khráp/khâ)'},
+    {en: 'Can you lower the price?', tr: 'ลดราคาหน่อยได้ไหม?', rom: 'Lót raakhaa nòi dâi mǎi?'},
+    {en: 'Can I pay by scanning a QR code?', tr: 'สแกนจ่ายได้ไหม?', rom: 'Sakaen jàai dâi mǎi?'},
+    {en: 'I don\'t need a plastic bag.', tr: 'ไม่รับถุงพลาสติกครับ/ค่ะ', rom: 'Mâi ráp thǔng phlaastìk (khráp/khâ)'},
+    {en: 'Where is the bathroom?', tr: 'ห้องน้ำอยู่ที่ไหน?', rom: 'Hông náam yùu thîi nǎi?'},
+    {en: 'Please call the police.', tr: 'กรุณาโทรเรียกตำรวจ', rom: 'Karunaa thoo rîak tamrùat'},
+    {en: 'I am lost.', tr: 'ฉันหลงทาง', rom: 'Chǎn lǒng thaang'},
+    {en: 'Please take me to this address.', tr: 'พาไปที่อยู่นี้หน่อย', rom: 'Phaa pai thîi yùu níi nòi'},
+    {en: 'Please turn on the meter.', tr: 'กรุณากดมิเตอร์ด้วย', rom: 'Karunaa kòt mítooe dûay'},
+    {en: 'I do not eat meat.', tr: 'ฉันไม่กินเนื้อสัตว์', rom: 'Chǎn mâi kin núea sàt'},
+    {en: 'I am vegetarian.', tr: 'ฉันกินมังสวิรัติ', rom: 'Chǎn kin mangsawirat'},
+    {en: 'Please make it a little spicy.', tr: 'ขอเผ็ดนิดหน่อย', rom: 'Khǒo phèt nít nòi'},
+    {en: 'Do you speak English?', tr: 'คุณพูดภาษาอังกฤษได้ไหม?', rom: 'Khun phûut phaasǎa Angkrit dâi mǎi?'},
+    {en: 'I don\'t understand.', tr: 'ฉันไม่เข้าใจ', rom: 'Chǎn mâi khâo jai'},
+    {en: 'Please speak slowly.', tr: 'กรุณาพูดช้าๆ', rom: 'Karunaa phûut cháa cháa'},
+    {en: 'Can you write it down?', tr: 'ช่วยเขียนให้หน่อยได้ไหม?', rom: 'Chûay khǐan hâi nòi dâi mǎi?'},
+    {en: 'I am allergic to peanuts.', tr: 'ฉันแพ้ถั่วลิสง', rom: 'Chǎn pháe thùa lísǒng'},
+    {en: 'I am allergic to seafood.', tr: 'ฉันแพ้อาหารทะเล', rom: 'Chǎn pháe aahǎan thalee'},
+    {en: 'Where can I exchange money?', tr: 'แลกเงินได้ที่ไหน?', rom: 'Lâek ngoen dâi thîi nǎi?'},
+    {en: 'What is the WiFi password?', tr: 'รหัสไวไฟคืออะไร?', rom: 'Rahat wai fai khuue arai?'},
+    {en: 'I would like to rent this room.', tr: 'ฉันต้องการเช่าห้องนี้', rom: 'Chǎn tôongkaan châo hông níi'},
+    {en: 'Is this price negotiable?', tr: 'ราคานี้ต่อรองได้ไหม?', rom: 'Raakhaa níi tòoraawng dâi mǎi?'},
+    {en: 'I need an ambulance.', tr: 'ฉันต้องการรถพยาบาล', rom: 'Chǎn tôongkaan rót phayabaan'},
+    {en: 'Where is the nearest ATM?', tr: 'ตู้ ATM ที่ใกล้ที่สุดอยู่ที่ไหน?', rom: 'Tûu ATM thîi klâi thîi sùt yùu thîi nǎi?'},
+    {en: 'Can I get a receipt?', tr: 'ขอใบเสร็จด้วยครับ/ค่ะ', rom: 'Khǒo bai sèt dûay (khráp/khâ)'},
+    {en: 'What time does it open?', tr: 'เปิดกี่โมง?', rom: 'Pòoet kîi moong?'},
+    {en: 'What time does it close?', tr: 'ปิดกี่โมง?', rom: 'Pìt kîi moong?'},
+    {en: 'Do you have an English menu?', tr: 'มีเมนูภาษาอังกฤษไหม?', rom: 'Mii meenuu phaasǎa Angkrit mǎi?'},
+    {en: 'Check, please (Bill, please).', tr: 'เก็บตังค์ด้วยครับ/ค่ะ', rom: 'Kèp tang dûay (khráp/khâ)'},
+    {en: 'Is there air conditioning?', tr: 'มีแอร์ไหม?', rom: 'Mii ae mǎi?'},
+    {en: 'Please turn on the AC.', tr: 'ช่วยเปิดแอร์หน่อย', rom: 'Chûay pòoet ae nòi'},
+    {en: 'This is an emergency!', tr: 'นี่คือเหตุฉุกเฉิน!', rom: 'Nîi khuue hèt chùk choen!'},
+    {en: 'Call an ambulance!', tr: 'โทรเรียกรถพยาบาล!', rom: 'Thoo rîak rót phayabaan!'},
+    {en: 'I have a reservation.', tr: 'ฉันจองไว้แล้ว', rom: 'Chǎn joong wái láeo'},
+    {en: 'Do you accept credit cards?', tr: 'รับบัตรเครดิตไหม?', rom: 'Ráp bàt khredit mǎi?'},
+    {en: 'Where is the train station?', tr: 'สถานีรถไฟอยู่ที่ไหน?', rom: 'Sathǎanii rót fai yùu thîi nǎi?'},
+    {en: 'I want to go to the airport.', tr: 'ฉันต้องการไปสนามบิน', rom: 'Chǎn tôongkaan pai sanǎam bin'},
+    {en: 'How long will it take?', tr: 'จะใช้เวลานานแค่ไหน?', rom: 'Jà chái weelaa naan khâe nǎi?'},
+    {en: 'What is your name?', tr: 'คุณชื่ออะไร?', rom: 'Khun chûue arai?'},
+    {en: 'My name is...', tr: 'ฉันชื่อ...', rom: 'Chǎn chûue...'},
+    {en: 'Nice to meet you.', tr: 'ยินดีที่ได้รู้จัก', rom: 'Yindii thîi dâi rúuják'},
+    {en: 'I am from...', tr: 'ฉันมาจาก...', rom: 'Chǎn maa jàak...'},
+    {en: 'I live here now.', tr: 'ฉันอาศัยอยู่ที่นี่', rom: 'Chǎn aasǎi yùu thîi nîi'},
+    {en: 'Can you help me?', tr: 'ช่วยฉันหน่อยได้ไหม?', rom: 'Chûay chǎn nòi dâi mǎi?'},
+    {en: 'Is it safe here?', tr: 'ที่นี่ปลอดภัยไหม?', rom: 'Thîi nîi plòt phai mǎi?'},
+    {en: 'Where is the embassy?', tr: 'สถานทูตอยู่ที่ไหน?', rom: 'Sathaan thûut yùu thîi nǎi?'},
+    {en: 'I feel sick.', tr: 'ฉันรู้สึกไม่สบาย', rom: 'Chǎn rúusùk mâi sabaai'},
+    {en: 'I have a headache.', tr: 'ฉันปวดหัว', rom: 'Chǎn pùat hǔa'},
+    {en: 'Do you have this in another size?', tr: 'มีไซส์อื่นไหม?', rom: 'Mii sai ùuen mǎi?'},
+    {en: 'Thank you very much.', tr: 'ขอบคุณมาก', rom: 'Khòp khun mâak'},
+    {en: 'You are very kind.', tr: 'คุณใจดีมาก', rom: 'Khun jai dii mâak'},
+    {en: 'What are you doing?', tr: 'ทำอะไรอยู่?', rom: 'Tham arai yùu?'},
+    {en: 'Are you okay?', tr: 'เป็นอะไรไหม?', rom: 'Pen arai mǎi?'},
+    {en: 'I miss you.', tr: 'คิดถึงนะ', rom: 'Khít thǔeng ná'},
+    {en: 'I love you.', tr: 'รักนะ', rom: 'Rák ná'},
+    {en: 'Don\'t be mad.', tr: 'อย่าโกรธเลยนะ', rom: 'Yàa kròot loei ná'},
+    {en: 'Leave me alone!', tr: 'ปล่อยฉันนะ!', rom: 'Plòi chǎn ná!'},
+    {en: 'Listen to me first.', tr: 'ฟังฉันก่อน', rom: 'Fang chǎn kòon'},
+    {en: 'Do you promise?', tr: 'สัญญาไหม?', rom: 'Sǎnyaa mǎi?'},
+    {en: 'It\'s not what you think!', tr: 'มันไม่ได้เป็นอย่างที่คุณคิด!', rom: 'Man mâi dâi pen yàang thîi khun khít!'},
+    {en: 'Please make it less sweet.', tr: 'ขอหวานน้อย', rom: 'Khǒo wǎan nóoi'},
+    {en: 'No sugar, please.', tr: 'ไม่ใส่น้ำตาล', rom: 'Mâi sài náam-taan'},
+    {en: 'Can I have it to go / takeaway?', tr: 'กลับบ้านครับ/ค่ะ', rom: 'Klàp bâan (khráp/khâ)'},
+    {en: 'Do you have a takeout box?', tr: 'มีกล่องใส่กลับบ้านไหม?', rom: 'Mii klòng sài klàp bâan mǎi?'},
+    {en: 'Stop here, please.', tr: 'จอดที่นี่ครับ/ค่ะ', rom: 'Jòot thîi nîi (khráp/khâ)'},
+    {en: 'Please drive slower.', tr: 'ขับช้าๆหน่อย', rom: 'Khàp cháa cháa nòi'},
+    {en: 'Can you wait for me here?', tr: 'รอที่นี่ได้ไหม?', rom: 'Roo thîi nîi dâi mǎi?'},
+    {en: 'Can I try this on?', tr: 'ขอลองได้ไหม?', rom: 'Khǒo loong dâi mǎi?'},
+    {en: 'Do you have a new one (in stock)?', tr: 'มีของใหม่ไหม?', rom: 'Mii khǒong mài mǎi?'},
+    {en: 'I am just looking around.', tr: 'ขอดูก่อน', rom: 'Khǒo duu kòon'},
+    {en: 'I like Thai food very much.', tr: 'ฉันชอบอาหารไทยมาก', rom: 'Chǎn chôop aahǎan Thai mâak'},
+    {en: 'Can you take a picture for me?', tr: 'ช่วยถ่ายรูปให้หน่อยได้ไหม?', rom: 'Chûay thàai rûup hâi nòi dâi mǎi?'},
+    {en: 'Let\'s go together.', tr: 'ไปด้วยกันเถอะ', rom: 'Pai dûay kan thòe'},
+    {en: 'Are you kidding me?', tr: 'ล้อเล่นป่ะเนี่ย?', rom: 'Lóo lên pà nîa?'},
+    {en: 'What did you say?', tr: 'พูดว่าอะไรนะ?', rom: 'Phûut wâa arai ná?'},
+    {en: 'That makes sense / I see.', tr: 'อ๋อ เข้าใจแล้ว', rom: 'Ǒo, khâo jai láeo'}
+  ],
+  emergency: [
+    {en: 'Help me!', tr: 'ช่วยด้วย!', rom: 'Chûay dûay!'},
+    {en: 'Call the police!', tr: 'โทรเรียกตำรวจ!', rom: 'Thoo rîak tamrùat!'},
+    {en: 'I need to contact my embassy.', tr: 'ฉันต้องติดต่อสถานทูต', rom: 'Chǎn tôong tìttòo sathaan thûut'},
+    {en: 'I lost my passport.', tr: 'พาสปอร์ตของฉันหาย', rom: 'Paasapòot khǒng chǎn hǎai'},
+    {en: 'Someone stole my wallet.', tr: 'มีคนขโมยกระเป๋าตังค์ฉัน', rom: 'Mii khon kha moi krapǎo tang chǎn'},
+    {en: 'I am having a heart attack.', tr: 'ฉันกำลังหัวใจวาย', rom: 'Chǎn kamlang hǔajai waai'},
+    {en: 'I am lost and need help.', tr: 'ฉันหลงทางและต้องการความช่วยเหลือ', rom: 'Chǎn lǒng thaang láe tôongkaan khwaam chûuaylǔea'},
+    {en: 'Someone stole my bag.', tr: 'มีคนขโมยกระเป๋าของฉัน', rom: 'Mii khon kha moi krapǎo khǒong chǎn'},
+    {en: 'I need an ambulance now.', tr: 'ฉันต้องการรถพยาบาลเดี๋ยวนี้', rom: 'Chǎn tôongkaan rót phayabaan dǐao níi'},
+    {en: 'Fire! Get out!', tr: 'ไฟไหม้! หนีเร็ว!', rom: 'Fai mâi! Nǐi reo!'},
+    {en: 'I am in danger.', tr: 'ฉันอยู่ในอันตราย', rom: 'Chǎn yùu nai antaraai'},
+  ]
+};
+
+// ── FAVORITES ──
+let favorites = JSON.parse(localStorage.getItem('thFavs') || '{}');
+function saveFavs() { localStorage.setItem('thFavs', JSON.stringify(favorites)); }
+function toggleFav(id, btn) {
+  favorites[id] = !favorites[id];
+  if (!favorites[id]) delete favorites[id];
+  btn.classList.toggle('faved', !!favorites[id]);
+  btn.title = favorites[id] ? 'Unfavorite' : 'Favorite';
+  saveFavs();
+}
+
+// ── VOICE ──
+let currentGender = 'female';
+function setVoiceGender(code, gender, btn) {
+  currentGender = gender;
+  btn.closest('.voice-toggle').querySelectorAll('.voice-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'th-TH';
+  u.rate = 0.85;
+  const voices = window.speechSynthesis.getVoices();
+  const langVoices = voices.filter(v => v.lang.startsWith('th'));
+  if (langVoices.length) {
+    const preferred = langVoices.find(v => {
+      const n = v.name.toLowerCase();
+      return currentGender === 'female'
+        ? (n.includes('female') || n.includes('woman'))
+        : (n.includes('male') || n.includes('man'));
+    }) || langVoices[currentGender === 'female' ? 0 : langVoices.length - 1];
+    u.voice = preferred;
+  }
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+// ── TOGGLE CULTURAL DRAWER ──
+function toggleCultural() {
+  const drawer = document.getElementById('cultural-drawer');
+  drawer.classList.toggle('open');
+}
+
+// ── TOGGLE SUPER SECTION ──
+function toggleSuperSection(el) {
+  el.closest('.super-section').classList.toggle('open');
+}
+
+// ── TOGGLE SENTENCE GROUP ──
+function toggleSentenceGroup(el) {
+  el.closest('.sentence-group').classList.toggle('open');
+}
+
+// ── BUILD WORDS with SUPER-SECTIONS ──
+function buildWords() {
+  const container = document.getElementById('word-categories');
+  container.innerHTML = SUPER_SECTIONS.map(group => {
+    const bodyHtml = group.cats.map(catName => {
+      const catData = LANG.categories[catName];
+      if (!catData) return '';
+
+      if (catData.isNumberDrill) {
+        const numHtml = catData.words.map(w => `
+          <div class="number-card" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">
+            <button class="speak-btn" onclick="event.stopPropagation();speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
+            <div class="number-digit">${w.en}</div>
+            <div class="number-tr">${w.tr}</div>
+            <div class="number-rom">${w.rom}</div>
+          </div>`).join('');
+        return `<div class="category-block" data-cat="${catName}">
+          <div class="category-label ${catData.cls}">${catName}</div>
+          <p style="font-size:0.85rem;color:var(--ink-muted);margin-bottom:0.75rem;font-style:italic;">Tap any card to hear it spoken aloud.</p>
+          <div class="number-grid">${numHtml}</div>
+        </div>`;
+      }
+
+      const wordsHtml = catData.words.map((w, i) => {
+        const id = `th-${catName}-${i}`;
+        const isFaved = !!favorites[id];
+        return `<div class="word-card">
+          <span class="word-en">${w.en}</span>
+          <div class="word-right">
+            <div class="word-translated">${w.tr}</div>
+            <div class="word-roman">${w.rom}</div>
+          </div>
+          <button class="speak-btn" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
+          <button class="fav-btn ${isFaved?'faved':''}" onclick="toggleFav('${id}',this)" title="${isFaved?'Unfavorite':'Favorite'}">★</button>
+        </div>`;
+      }).join('');
+      return `<div class="category-block" data-cat="${catName}">
+        <div class="category-label ${catData.cls}">${catName}</div>
+        <div class="word-grid">${wordsHtml}</div>
+      </div>`;
+    }).join('');
+
+    const totalWords = group.cats.reduce((acc, catName) => {
+      const cat = LANG.categories[catName];
+      return acc + (cat ? cat.words.length : 0);
+    }, 0);
+
+    return `<div class="super-section ${group.cls} ${group.openByDefault ? 'open' : ''}">
+      <button class="super-section-toggle" onclick="toggleSuperSection(this)">
+        <div class="super-section-toggle-left">
+          <span>${group.label}</span>
+          <span class="super-section-badge">${totalWords} words</span>
+        </div>
+        <span class="super-chevron">▼</span>
+      </button>
+      <div class="super-section-body">${bodyHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── BUILD SENTENCES with GROUPS ──
+function buildSentences() {
+  const container = document.getElementById('sentence-groups');
+  container.innerHTML = SENTENCE_GROUPS.map(group => {
+    // Deduplicate indices
+    const uniqueIndices = [...new Set(group.indices)].filter(i => i < LANG.sentences.length);
+    const sentencesHtml = uniqueIndices.map(i => {
+      const s = LANG.sentences[i];
+      return `<div class="sentence-card">
+        <div class="sentence-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="sentence-body">
+          <div class="sentence-en">${s.en}</div>
+          <div class="sentence-tr">${s.tr}</div>
+          <div class="sentence-roman">${s.rom}</div>
+        </div>
+        <button class="speak-btn" onclick="speak('${s.tr.replace(/'/g,"\\'")}')">🔊</button>
+      </div>`;
+    }).join('');
+
+    return `<div class="sentence-group">
+      <button class="sentence-group-toggle" onclick="toggleSentenceGroup(this)">
+        <span>${group.label}</span>
+        <div class="sentence-group-right">
+          <span class="sentence-group-count">${uniqueIndices.length} phrases</span>
+          <span class="sg-chevron">▼</span>
+        </div>
+      </button>
+      <div class="sentence-group-body">
+        <div class="sentence-list">${sentencesHtml}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── BUILD EMERGENCY ──
+function buildEmergency() {
+  document.getElementById('emergency-grid').innerHTML = LANG.emergency.map(e => `
+    <div class="emergency-card">
+      <div class="emergency-en">${e.en}</div>
+      <div class="emergency-tr">${e.tr}</div>
+      <div class="emergency-roman">${e.rom}</div>
+      <button class="emergency-speak" onclick="speak('${e.tr.replace(/'/g,"\\'")}')">🔊 Say it</button>
+    </div>`).join('');
+}
+
+// ── SEARCH (works across all super-sections) ──
+function filterWords(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.word-card').forEach(card => {
+    card.style.display = (!q || card.textContent.toLowerCase().includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.category-block').forEach(block => {
+    if (block.querySelector('.number-grid')) return;
+    const visible = [...block.querySelectorAll('.word-card')].some(c => c.style.display !== 'none');
+    block.style.display = visible ? '' : 'none';
+  });
+  // Auto-open super sections that have results when searching
+  if (q) {
+    document.querySelectorAll('.super-section').forEach(section => {
+      const hasVisible = [...section.querySelectorAll('.word-card')].some(c => c.style.display !== 'none');
+      if (hasVisible) section.classList.add('open');
+    });
+  }
+}
+
+// ── SECTION SWITCH ──
+function switchSection(sec, btn) {
+  document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.sec-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + sec).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── INIT ──
+buildWords();
+buildSentences();
+buildEmergency();
+
+if (window.speechSynthesis) {
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+</script>
+</body>
+</html>
