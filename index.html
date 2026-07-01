@@ -140,7 +140,7 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     padding: 1.5rem 2rem;
     background: var(--ink);
     border-radius: 12px;
@@ -176,7 +176,107 @@
     font-style: normal;
   }
 
-  .category-block { margin-bottom: 2.5rem; }
+  /* ── COLLAPSIBLE CULTURAL NOTES ── */
+  .cultural-drawer {
+    margin-bottom: 1.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .cultural-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--purple-pale);
+    border: none;
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--purple);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .cultural-toggle:hover { background: #E0D8F0; }
+  .cultural-toggle-chevron {
+    font-size: 0.85rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .cultural-drawer.open .cultural-toggle-chevron { transform: rotate(180deg); }
+  .cultural-body {
+    display: none;
+    background: var(--purple-pale);
+    border-top: 1px solid rgba(107,79,138,0.15);
+    padding: 1.25rem 1.5rem;
+  }
+  .cultural-drawer.open .cultural-body { display: block; }
+  .cultural-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .cultural-body li::before { content: '✦  '; color: var(--purple-light); }
+  .cultural-body li { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ── SUPER SECTIONS (accordion groups) ── */
+  .super-section {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .super-section-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    background: var(--cream-dark);
+    border: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+    gap: 0.75rem;
+  }
+  .super-section-toggle:hover { background: var(--cream-darker); }
+  .super-section-toggle-left { display: flex; align-items: center; gap: 0.75rem; }
+  .super-section-badge {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.6rem;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.07);
+    color: var(--ink-muted);
+  }
+  .super-chevron {
+    font-size: 0.85rem;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    color: var(--ink-muted);
+  }
+  .super-section.open .super-chevron { transform: rotate(180deg); }
+  .super-section-body {
+    display: none;
+    padding: 1.25rem 1.25rem 0.5rem;
+    background: var(--cream);
+    border-top: 1.5px solid var(--cream-darker);
+  }
+  .super-section.open .super-section-body { display: block; }
+
+  /* color accents per super-section */
+  .super-core .super-section-toggle { border-left: 4px solid var(--rose); }
+  .super-daily .super-section-toggle { border-left: 4px solid var(--green); }
+  .super-language .super-section-toggle { border-left: 4px solid var(--blue); }
+  .super-culture .super-section-toggle { border-left: 4px solid var(--purple); }
+
+  /* ── CATEGORY BLOCKS ── */
+  .category-block { margin-bottom: 2rem; }
   .category-label {
     display: inline-flex;
     align-items: center;
@@ -203,6 +303,12 @@
   .cat-greetings { background: #E8F5EC; color: #2E7A48; }
   .cat-titles    { background: #F5EAF5; color: #7A3A8A; }
   .cat-numbers20 { background: var(--gold-pale); color: var(--gold); }
+  .cat-media     { background: #F0EAF8; color: #5A3A7A; }
+  .cat-slang     { background: #FFF0E8; color: #C05A20; }
+  .cat-particles { background: #E8F0FF; color: #3A4A9A; }
+  .cat-calendar  { background: #E8F5F0; color: #2A7A5A; }
+  .cat-colors    { background: #F0F0F8; color: #4A4A8A; }
+  .cat-classifiers { background: #F5F0E0; color: #7A6A20; }
 
   .word-grid {
     display: grid;
@@ -261,6 +367,58 @@
     color: var(--orange);
   }
   .speak-btn:hover { background: var(--orange); color: white; transform: scale(1.1); }
+
+  /* ── SENTENCE GROUPS ── */
+  .sentence-group {
+    margin-bottom: 1.25rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--cream-darker);
+  }
+  .sentence-group-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.1rem;
+    background: var(--cream-dark);
+    border: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+    gap: 0.5rem;
+  }
+  .sentence-group-toggle:hover { background: var(--cream-darker); }
+  .sentence-group-count {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.55rem;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.07);
+    color: var(--ink-muted);
+    flex-shrink: 0;
+  }
+  .sentence-group-right { display: flex; align-items: center; gap: 0.5rem; }
+  .sg-chevron {
+    font-size: 0.8rem;
+    transition: transform 0.25s;
+    color: var(--ink-muted);
+  }
+  .sentence-group.open .sg-chevron { transform: rotate(180deg); }
+  .sentence-group-body {
+    display: none;
+    padding: 0.75rem 1rem;
+    background: var(--cream);
+    border-top: 1.5px solid var(--cream-darker);
+  }
+  .sentence-group.open .sentence-group-body { display: block; }
 
   .sentence-list { display: flex; flex-direction: column; gap: 0.75rem; }
   .sentence-card {
@@ -321,24 +479,6 @@
   }
   .emergency-speak:hover { background: var(--orange-light); transform: scale(1.02); }
 
-  .cultural-notes {
-    background: var(--purple-pale);
-    border-left: 4px solid var(--purple);
-    border-radius: 0 10px 10px 0;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .cultural-notes h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: var(--purple);
-    margin-bottom: 0.75rem;
-    font-size: 1.15rem;
-  }
-  .cultural-notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-  .cultural-notes li::before { content: '✦  '; color: var(--purple-light); }
-  .cultural-notes li { color: var(--ink-soft); font-size: 0.95rem; }
-
   .fav-btn {
     background: none;
     border: none;
@@ -355,7 +495,7 @@
   .search-bar {
     display: flex;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
   .search-input {
@@ -515,40 +655,47 @@
     </div>
   </div>
 
-  <div class="cultural-notes">
-    <h3>✦ Cultural Tips</h3>
-    <ul>
-      <li><strong>Remove your shoes</strong> before entering homes, temples, and certain small businesses.</li>
-      <li><strong>Greet with the "Wai"</strong> (pressing your palms together with a slight bow) to show respect.</li>
-      <li><strong>Never touch someone's head</strong>, as it is considered the most sacred part of the body.</li>
-      <li><strong>Point with an open hand</strong> rather than a single index finger to remain polite.</li>
-      <li><strong>Dress modestly at temples</strong> by ensuring your shoulders and knees are fully covered.</li>
-      <li><strong>Show absolute respect for the Royal Family</strong>, as speaking ill of them is strictly against the law.</li>
-      <li><strong>Add polite particles</strong> ("Krap" for men, "Ka" for women) to the end of your sentences.</li>
-      <li><strong>Share meals family-style</strong>, taking only small portions from the central dishes at a time.</li>
-      <li><strong>Use your right hand</strong> to pass money or food, as the left hand is traditionally considered unclean.</li>
-      <li><strong>Keep your feet pointed away</strong> from people, monks, and religious objects, as feet are seen as the lowest part of the body.</li>
-      <li><strong>Maintain a "cool heart" (Jai Yen)</strong> by avoiding public outbursts or losing your temper.</li>
-      <li><strong>Stand completely still</strong> if you hear the National Anthem playing in public spaces, which typically occurs at 8 AM and 6 PM.</li>
-      <li><strong>Respect monastic rules:</strong> Women should never physically touch a Buddhist monk or hand items directly to them.</li>
-      <li><strong>Embrace the "Mai pen rai" (no worries) mindset</strong>, keeping a flexible and relaxed attitude toward daily inconveniences.</li>
-      <li><strong>Eat with a spoon and fork:</strong> Hold the spoon in your right hand and use the left fork to push food onto it. Chopsticks are for noodle soups.</li>
-      <li><strong>Dispose of toilet paper in the provided bin</strong> rather than flushing it, and utilize the bidet sprayer (the "bum gun") instead.</li>
-      <li><strong>Leave a small tip (20–50 baht)</strong> for good service, though standard Western-style tipping is not mandatory.</li>
-      <li><strong>Treat Buddha images with deep reverence;</strong> never pose disrespectfully with them or purchase them merely as casual home decor.</li>
-      <li><strong>Keep public displays of affection modest;</strong> holding hands is perfectly acceptable, but overt kissing is frowned upon.</li>  
-      <li><strong>The "Golden Rule" of utensils:</strong> Hold the spoon in your right hand and the fork in your left. Use the fork only to push food onto the spoon—<strong>never put the fork in your mouth.</strong></li>
-      <li><strong>Chopsticks have a specific place:</strong> Reserve chopsticks only for noodle soups; they are rarely used for rice or stir-fried dishes.</li>
-      <li><strong>Wait for the host:</strong> In traditional settings, it is polite to wait for the eldest person at the table to take the first bite before you begin your meal.</li>
-      <li><strong>Mind your trash:</strong> If you are eating street food, look for the designated bin. Never leave trash on the table, even if you see others do it.</li>
-      <li><strong>The "Bum Gun" etiquette:</strong> If you see a small sprayer next to the toilet, it is for personal hygiene. Aim away from the floor and walls to avoid making a mess for the next person!</li>
-      <li><strong>Shared dishes are the norm:</strong> When eating with others, you are expected to share. Everyone usually orders different dishes for the table, and you take small portions of each onto your own plate of rice.</li>
-      <li><strong>Respect the bill:</strong> In social settings, it is common for the person who invited the group or the senior person to pay for the meal. Do not insist on "splitting the check", this can be seen as awkward.</li>
+  <!-- COLLAPSIBLE CULTURAL NOTES -->
+  <div class="cultural-drawer" id="cultural-drawer">
+    <button class="cultural-toggle" onclick="toggleCultural()">
+      <span>✦ Cultural Tips &amp; Etiquette</span>
+      <span class="cultural-toggle-chevron">▼</span>
+    </button>
+    <div class="cultural-body">
+      <ul>
+        <li><strong>Remove your shoes</strong> before entering homes, temples, and certain small businesses.</li>
+        <li><strong>Greet with the "Wai"</strong> (pressing your palms together with a slight bow) to show respect.</li>
+        <li><strong>Never touch someone's head</strong>, as it is considered the most sacred part of the body.</li>
+        <li><strong>Point with an open hand</strong> rather than a single index finger to remain polite.</li>
+        <li><strong>Dress modestly at temples</strong> by ensuring your shoulders and knees are fully covered.</li>
+        <li><strong>Show absolute respect for the Royal Family</strong>, as speaking ill of them is strictly against the law.</li>
+        <li><strong>Add polite particles</strong> ("Krap" for men, "Ka" for women) to the end of your sentences.</li>
+        <li><strong>Share meals family-style</strong>, taking only small portions from the central dishes at a time.</li>
+        <li><strong>Use your right hand</strong> to pass money or food, as the left hand is traditionally considered unclean.</li>
+        <li><strong>Keep your feet pointed away</strong> from people, monks, and religious objects, as feet are seen as the lowest part of the body.</li>
+        <li><strong>Maintain a "cool heart" (Jai Yen)</strong> by avoiding public outbursts or losing your temper.</li>
+        <li><strong>Stand completely still</strong> if you hear the National Anthem playing in public spaces, which typically occurs at 8 AM and 6 PM.</li>
+        <li><strong>Respect monastic rules:</strong> Women should never physically touch a Buddhist monk or hand items directly to them.</li>
+        <li><strong>Embrace the "Mai pen rai" (no worries) mindset</strong>, keeping a flexible and relaxed attitude toward daily inconveniences.</li>
+        <li><strong>Eat with a spoon and fork:</strong> Hold the spoon in your right hand and use the left fork to push food onto it. Chopsticks are for noodle soups.</li>
+        <li><strong>Dispose of toilet paper in the provided bin</strong> rather than flushing it, and utilize the bidet sprayer (the "bum gun") instead.</li>
+        <li><strong>Leave a small tip (20–50 baht)</strong> for good service, though standard Western-style tipping is not mandatory.</li>
+        <li><strong>Treat Buddha images with deep reverence;</strong> never pose disrespectfully with them or purchase them merely as casual home decor.</li>
+        <li><strong>Keep public displays of affection modest;</strong> holding hands is perfectly acceptable, but overt kissing is frowned upon.</li>
+        <li><strong>The "Golden Rule" of utensils:</strong> Hold the spoon in your right hand and the fork in your left. Use the fork only to push food onto the spoon — <strong>never put the fork in your mouth.</strong></li>
+        <li><strong>Chopsticks have a specific place:</strong> Reserve chopsticks only for noodle soups; they are rarely used for rice or stir-fried dishes.</li>
+        <li><strong>Wait for the host:</strong> In traditional settings, it is polite to wait for the eldest person at the table to take the first bite before you begin your meal.</li>
+        <li><strong>Mind your trash:</strong> If you are eating street food, look for the designated bin. Never leave trash on the table, even if you see others do it.</li>
+        <li><strong>The "Bum Gun" etiquette:</strong> If you see a small sprayer next to the toilet, it is for personal hygiene. Aim away from the floor and walls to avoid making a mess for the next person!</li>
+        <li><strong>Shared dishes are the norm:</strong> When eating with others, you are expected to share. Everyone usually orders different dishes for the table, and you take small portions of each onto your own plate of rice.</li>
+        <li><strong>Respect the bill:</strong> In social settings, it is common for the person who invited the group or the senior person to pay for the meal. Do not insist on "splitting the check", this can be seen as awkward.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="section-tabs">
     <button class="sec-btn active" onclick="switchSection('words',this)">📖 Words</button>
-    <button class="sec-btn" onclick="switchSection('sentences',this)">💬 50 Sentences</button>
+    <button class="sec-btn" onclick="switchSection('sentences',this)">💬 Sentences</button>
     <button class="sec-btn" onclick="switchSection('emergency',this)">🚨 Emergency</button>
   </div>
 
@@ -563,7 +710,7 @@
 
   <!-- SENTENCES -->
   <div id="sec-sentences" class="section-content">
-    <div class="sentence-list" id="sentence-list"></div>
+    <div id="sentence-groups"></div>
   </div>
 
   <!-- EMERGENCY -->
@@ -588,6 +735,71 @@ function googleTranslateElementInit() {
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+// ── SUPER-SECTION DEFINITIONS ──
+// Each group has a label, accent class, open-by-default flag, and list of category keys
+const SUPER_SECTIONS = [
+  {
+    label: '🚀 Core Essentials',
+    cls: 'super-core',
+    openByDefault: true,
+    cats: ['💬 Social', '🚨 Survival', '❓ Question Words', '🙏 Polite Particles', '🏃 Essential Verbs']
+  },
+  {
+    label: '📍 Daily Life',
+    cls: 'super-daily',
+    openByDefault: false,
+    cats: ['🍜 Food & Drink', '🚌 Transport', '💰 Money & Shopping', '🏠 Housing', '❤️ Health', '🔢 Numbers & Time', '📅 Days & Months']
+  },
+  {
+    label: '🧠 Language Building',
+    cls: 'super-language',
+    openByDefault: false,
+    cats: ['🧑‍🤝‍🧑 Pronouns & Pointers', '👨‍👩‍👧 Family & Relatives', '🎩 Titles & Address', '🎨 Colors & Adjectives', '📦 Common Classifiers', '🔢 Numbers 1–20']
+  },
+  {
+    label: '🎭 Culture & Vibes',
+    cls: 'super-culture',
+    openByDefault: false,
+    cats: ['👋 Greetings & Celebrations', '🎭 Feelings & States', '📺 Drama & Slang', '💖 Romance & Compliments', '🔥 Media & Internet Slang']
+  }
+];
+
+// ── SENTENCE GROUP DEFINITIONS ──
+const SENTENCE_GROUPS = [
+  {
+    label: '🚨 Emergencies & Safety',
+    indices: [8, 9, 25, 34, 35, 47, 48]
+  },
+  {
+    label: '🏥 Medical & Health',
+    indices: [0, 1, 19, 20, 49, 50]
+  },
+  {
+    label: '💰 Money, Shopping & Bargaining',
+    indices: [2, 3, 4, 5, 6, 21, 24, 27, 37, 51, 61, 62, 63, 72]
+  },
+  {
+    label: '🍜 Food & Ordering',
+    indices: [12, 13, 14, 30, 31, 32, 33, 59, 60, 64, 65, 66, 73]
+  },
+  {
+    label: '🚌 Transport & Getting Around',
+    indices: [10, 11, 38, 39, 40, 67, 68, 69]
+  },
+  {
+    label: '🏠 Accommodation',
+    indices: [23, 28, 29, 32, 33]
+  },
+  {
+    label: '💬 Social & Introductions',
+    indices: [15, 16, 17, 18, 22, 36, 41, 42, 43, 44, 45, 46, 53, 54, 70, 71, 74, 75, 76, 77, 78, 79]
+  },
+  {
+    label: '💖 Romance & Drama',
+    indices: [55, 56, 57, 58, 72, 73]
+  }
+];
+
 const LANG = {
   voiceCode: 'th-TH',
   voiceGender: 'female',
@@ -637,7 +849,7 @@ const LANG = {
       ]
     },
     '👨‍👩‍👧 Family & Relatives': { 
-      cls: 'cat-social', // Reusing your existing social color
+      cls: 'cat-social',
       words: [
         {en: 'Mother', tr: 'แม่', rom: 'Mâe'},
         {en: 'Father', tr: 'พ่อ', rom: 'Phôo'},
@@ -702,7 +914,7 @@ const LANG = {
       ]
     },
     '🏃 Essential Verbs': { 
-      cls: 'cat-transport', // Reusing a blue color for action
+      cls: 'cat-transport',
       words: [
         {en: 'To go', tr: 'ไป', rom: 'Pai'},
         {en: 'To come', tr: 'มา', rom: 'Maa'},
@@ -769,7 +981,7 @@ const LANG = {
       ]
     },
     '🎭 Feelings & States': { 
-      cls: 'cat-health', // Reusing the rose/red color
+      cls: 'cat-health',
       words: [
         {en: 'Hungry', tr: 'หิว', rom: 'Hǐu'},
         {en: 'Thirsty', tr: 'หิวน้ำ', rom: 'Hǐu náam'},
@@ -1069,7 +1281,7 @@ const LANG = {
       ]
     }
   },
- sentences: [
+  sentences: [
     {en: 'Where is the nearest hospital?', tr: 'โรงพยาบาลที่ใกล้ที่สุดอยู่ที่ไหน?', rom: 'Rong phayabaan thîi klâi thîi sùt yùu thîi nǎi?'},
     {en: 'I need a doctor.', tr: 'ฉันต้องการพบหมอ', rom: 'Chǎn tôongkaan phóp mǒr'},
     {en: 'How much does this cost?', tr: 'อันนี้ราคาเท่าไหร่?', rom: 'An níi raakhaa thâo rài?'},
@@ -1164,6 +1376,7 @@ const LANG = {
     {en: 'I am in danger.', tr: 'ฉันอยู่ในอันตราย', rom: 'Chǎn yùu nai antaraai'},
   ]
 };
+
 // ── FAVORITES ──
 let favorites = JSON.parse(localStorage.getItem('thFavs') || '{}');
 function saveFavs() { localStorage.setItem('thFavs', JSON.stringify(favorites)); }
@@ -1203,56 +1416,114 @@ function speak(text) {
   window.speechSynthesis.speak(u);
 }
 
-// ── BUILD WORDS ──
+// ── TOGGLE CULTURAL DRAWER ──
+function toggleCultural() {
+  const drawer = document.getElementById('cultural-drawer');
+  drawer.classList.toggle('open');
+}
+
+// ── TOGGLE SUPER SECTION ──
+function toggleSuperSection(el) {
+  el.closest('.super-section').classList.toggle('open');
+}
+
+// ── TOGGLE SENTENCE GROUP ──
+function toggleSentenceGroup(el) {
+  el.closest('.sentence-group').classList.toggle('open');
+}
+
+// ── BUILD WORDS with SUPER-SECTIONS ──
 function buildWords() {
   const container = document.getElementById('word-categories');
-  container.innerHTML = Object.entries(LANG.categories).map(([catName, catData]) => {
-    if (catData.isNumberDrill) {
-      const numHtml = catData.words.map(w => `
-        <div class="number-card" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">
-          <button class="speak-btn" onclick="event.stopPropagation();speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
-          <div class="number-digit">${w.en}</div>
-          <div class="number-tr">${w.tr}</div>
-          <div class="number-rom">${w.rom}</div>
-        </div>`).join('');
-      return `<div class="category-block">
+  container.innerHTML = SUPER_SECTIONS.map(group => {
+    const bodyHtml = group.cats.map(catName => {
+      const catData = LANG.categories[catName];
+      if (!catData) return '';
+
+      if (catData.isNumberDrill) {
+        const numHtml = catData.words.map(w => `
+          <div class="number-card" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">
+            <button class="speak-btn" onclick="event.stopPropagation();speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
+            <div class="number-digit">${w.en}</div>
+            <div class="number-tr">${w.tr}</div>
+            <div class="number-rom">${w.rom}</div>
+          </div>`).join('');
+        return `<div class="category-block" data-cat="${catName}">
+          <div class="category-label ${catData.cls}">${catName}</div>
+          <p style="font-size:0.85rem;color:var(--ink-muted);margin-bottom:0.75rem;font-style:italic;">Tap any card to hear it spoken aloud.</p>
+          <div class="number-grid">${numHtml}</div>
+        </div>`;
+      }
+
+      const wordsHtml = catData.words.map((w, i) => {
+        const id = `th-${catName}-${i}`;
+        const isFaved = !!favorites[id];
+        return `<div class="word-card">
+          <span class="word-en">${w.en}</span>
+          <div class="word-right">
+            <div class="word-translated">${w.tr}</div>
+            <div class="word-roman">${w.rom}</div>
+          </div>
+          <button class="speak-btn" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
+          <button class="fav-btn ${isFaved?'faved':''}" onclick="toggleFav('${id}',this)" title="${isFaved?'Unfavorite':'Favorite'}">★</button>
+        </div>`;
+      }).join('');
+      return `<div class="category-block" data-cat="${catName}">
         <div class="category-label ${catData.cls}">${catName}</div>
-        <p style="font-size:0.85rem;color:var(--ink-muted);margin-bottom:0.75rem;font-style:italic;">Tap any card to hear it spoken aloud.</p>
-        <div class="number-grid">${numHtml}</div>
-      </div>`;
-    }
-    const wordsHtml = catData.words.map((w, i) => {
-      const id = `th-${catName}-${i}`;
-      const isFaved = !!favorites[id];
-      return `<div class="word-card">
-        <span class="word-en">${w.en}</span>
-        <div class="word-right">
-          <div class="word-translated">${w.tr}</div>
-          <div class="word-roman">${w.rom}</div>
-        </div>
-        <button class="speak-btn" onclick="speak('${w.tr.replace(/'/g,"\\'")}')">🔊</button>
-        <button class="fav-btn ${isFaved?'faved':''}" onclick="toggleFav('${id}',this)" title="${isFaved?'Unfavorite':'Favorite'}">★</button>
+        <div class="word-grid">${wordsHtml}</div>
       </div>`;
     }).join('');
-    return `<div class="category-block" data-cat="${catName}">
-      <div class="category-label ${catData.cls}">${catName}</div>
-      <div class="word-grid">${wordsHtml}</div>
+
+    const totalWords = group.cats.reduce((acc, catName) => {
+      const cat = LANG.categories[catName];
+      return acc + (cat ? cat.words.length : 0);
+    }, 0);
+
+    return `<div class="super-section ${group.cls} ${group.openByDefault ? 'open' : ''}">
+      <button class="super-section-toggle" onclick="toggleSuperSection(this)">
+        <div class="super-section-toggle-left">
+          <span>${group.label}</span>
+          <span class="super-section-badge">${totalWords} words</span>
+        </div>
+        <span class="super-chevron">▼</span>
+      </button>
+      <div class="super-section-body">${bodyHtml}</div>
     </div>`;
   }).join('');
 }
 
-// ── BUILD SENTENCES ──
+// ── BUILD SENTENCES with GROUPS ──
 function buildSentences() {
-  document.getElementById('sentence-list').innerHTML = LANG.sentences.map((s, i) => `
-    <div class="sentence-card">
-      <div class="sentence-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="sentence-body">
-        <div class="sentence-en">${s.en}</div>
-        <div class="sentence-tr">${s.tr}</div>
-        <div class="sentence-roman">${s.rom}</div>
+  const container = document.getElementById('sentence-groups');
+  container.innerHTML = SENTENCE_GROUPS.map(group => {
+    // Deduplicate indices
+    const uniqueIndices = [...new Set(group.indices)].filter(i => i < LANG.sentences.length);
+    const sentencesHtml = uniqueIndices.map(i => {
+      const s = LANG.sentences[i];
+      return `<div class="sentence-card">
+        <div class="sentence-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="sentence-body">
+          <div class="sentence-en">${s.en}</div>
+          <div class="sentence-tr">${s.tr}</div>
+          <div class="sentence-roman">${s.rom}</div>
+        </div>
+        <button class="speak-btn" onclick="speak('${s.tr.replace(/'/g,"\\'")}')">🔊</button>
+      </div>`;
+    }).join('');
+
+    return `<div class="sentence-group">
+      <button class="sentence-group-toggle" onclick="toggleSentenceGroup(this)">
+        <span>${group.label}</span>
+        <div class="sentence-group-right">
+          <span class="sentence-group-count">${uniqueIndices.length} phrases</span>
+          <span class="sg-chevron">▼</span>
+        </div>
+      </button>
+      <div class="sentence-group-body">
+        <div class="sentence-list">${sentencesHtml}</div>
       </div>
-      <button class="speak-btn" onclick="speak('${s.tr.replace(/'/g,"\\'")}')">🔊</button>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 // ── BUILD EMERGENCY ──
@@ -1266,7 +1537,7 @@ function buildEmergency() {
     </div>`).join('');
 }
 
-// ── SEARCH ──
+// ── SEARCH (works across all super-sections) ──
 function filterWords(query) {
   const q = query.toLowerCase();
   document.querySelectorAll('.word-card').forEach(card => {
@@ -1277,6 +1548,13 @@ function filterWords(query) {
     const visible = [...block.querySelectorAll('.word-card')].some(c => c.style.display !== 'none');
     block.style.display = visible ? '' : 'none';
   });
+  // Auto-open super sections that have results when searching
+  if (q) {
+    document.querySelectorAll('.super-section').forEach(section => {
+      const hasVisible = [...section.querySelectorAll('.word-card')].some(c => c.style.display !== 'none');
+      if (hasVisible) section.classList.add('open');
+    });
+  }
 }
 
 // ── SECTION SWITCH ──
@@ -1292,7 +1570,6 @@ buildWords();
 buildSentences();
 buildEmergency();
 
-// Ensure voices are loaded for Safari/Chrome
 if (window.speechSynthesis) {
   window.speechSynthesis.getVoices();
   window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
